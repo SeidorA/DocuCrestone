@@ -332,7 +332,7 @@ The SAP MM (Materials Management) module is a core part of the SAP ERP system de
 
 ### MM Transactional Data Extractors
 
-![a](/img/Conections/estractores/transaction_mm.png)
+![a](/img/Conections/estractores/Transaction_mm.png)
 
 #### **Extractor: 2LIS\_02\_ITM** (Purchasing Data - Item Level)
 

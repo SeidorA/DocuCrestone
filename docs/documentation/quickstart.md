@@ -77,7 +77,7 @@ Enter the required data to be able to connect correctly with your destination.
 
 1. Go to **Create Destination**.
 2. Enter:
-![Destination connection settings screen.](/img/old/connection/snow.png)
+![Destination connection settings screen.](/img/old/connection/Snow.png)
    - **Name:** `Snowflake_Destination`
    - **Username:** `SF_USER`
    - **Private Key:** `-----BEGIN PRIVATE KEY----- ...`

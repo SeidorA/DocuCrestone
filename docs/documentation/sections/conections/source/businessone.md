@@ -16,7 +16,7 @@ You’ll learn how to authenticate, define endpoints, and integrate structured S
 ### 1. Select the source type:
 - Select any of the OData options we have available to connect your source
 <p align="center">
-  ![Illustration showing the selection of OData source type in SAP integration setup.](/img/old/ODatasap/bo.png)
+  ![Illustration showing the selection of OData source type in SAP integration setup.](/img/old/odatasap/bo.png)
 </p>
 
 ### 2. Select the type of authentication
@@ -28,7 +28,7 @@ You’ll learn how to authenticate, define endpoints, and integrate structured S
 <p> **Enter SAP OData credentials:** </p>
 You will be prompted to enter the credentials needed to connect to your SAP OData system.
 <p align="center">
-  ![Screenshot of SAP OData Basic Authentication input fields including username and password.](/img/old/ODatasap/select.png)
+  ![Screenshot of SAP OData Basic Authentication input fields including username and password.](/img/old/odatasap/select.png)
 </p>
   
 **Username**
@@ -52,7 +52,7 @@ You will be prompted to enter the credentials needed to connect to your SAP ODat
   <p> **Enter API Key:** </p>
 You will be prompted to enter the credentials needed to connect to your SAP OData system.
 <p align="center">
-    ![Screenshot of SAP OData API Key authentication input screen.](/img/old/ODatasap/api.png)
+    ![Screenshot of SAP OData API Key authentication input screen.](/img/old/odatasap/api.png)
 </p>
 
 
