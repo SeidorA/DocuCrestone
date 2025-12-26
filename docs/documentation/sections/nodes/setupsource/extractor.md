@@ -53,7 +53,7 @@ Choose how the data will be extracted:
 ![a](/img/node/extractor/c.png)
 
 - Delta Load: Extracts only new or changed records since the last execution (only available for delta-enabled extractors).
-![a](/img/node/extractor/D.png)
+![a](/img/node/extractor/d.png)
 
 
 <Admonition type="tip">

@@ -25,7 +25,7 @@ In the destination settings, choose Table as the storage type under the "Select 
 ![Set the Storage Type](/img/node/table/storage.png)
 
 ### 3. Choose or Create a Table
-![Choose a Table](/img/node/table/table.png)
+![Choose a Table](/img/node/table/Table.png)
 - If the target table already exists, select it from the list.
 - If it doesn't exist, you can create a new one directly from the interface by defining its name and structure.
 ![Create a Table](/img/node/table/newtable.png)

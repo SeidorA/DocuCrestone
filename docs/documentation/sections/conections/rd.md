@@ -455,7 +455,7 @@ The SAP SD (Sales and Distribution) module is a key component of the SAP ERP sys
 
 ### SD Transactional Data Extractors
 
-![a](/img/Conections/estractores/transaction_sd.png)
+![a](/img/Conections/estractores/Transaction_sd.png)
 
 #### **Extractor: 2LIS\_11\_VAITM** (Sales Order Item Data)
 
@@ -616,7 +616,7 @@ The SAP PP (Production Planning) module is a vital part of the SAP ERP system, d
 
 ### PP Transactional Data Extractors
 
-![a](/img/Conections/estractores/transaction_pp.png)
+![a](/img/Conections/estractores/Transaction_pp.png)
 
 #### **Extractor: 2LIS\_04\_P\_ARBPL** (Work Center Load)
 
@@ -780,7 +780,7 @@ Key features include work breakdown structures (WBS), project cost and revenue t
 
 ### PS Transactional Data Extractors
 
-![a](/img/Conections/estractores/transaction_ps.png)
+![a](/img/Conections/estractores/Transaction_ps.png)
 
 #### **Extractor: 2LIS\_13\_VDITM** (PS Billing: Line Item Data)
 
@@ -933,7 +933,7 @@ SAP CO helps organizations monitor costs, allocate resources effectively, and as
 
 ### CO Transactional Data Extractors
 
-![a](/img/Conections/estractores/transaction_co.png)
+![a](/img/Conections/estractores/Transaction_co.png)
 
 #### **Extractor: 0CO\_OM\_CCA\_1** (Cost Center Accounting: Actual Costs)
 
