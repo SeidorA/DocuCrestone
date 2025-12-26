@@ -1,0 +1,40 @@
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.featureSvg {
+  height: 200px;
+  width: 200px;
+}
+
+
+.card{
+  border-radius: 8px;
+  border: solid 1px #E4E4E7;
+  overflow: hidden;
+  height: 100%;
+  img{
+    width: 100%;
+    height: auto;
+  }
+  p{
+    color: #94A3B8;
+  }
+  h3{
+    margin: 0 !important;
+  }
+}
+
+.top_img_card{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 509.33/ 170;
+  padding: 10px;
+
+}

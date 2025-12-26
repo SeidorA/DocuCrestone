@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 526.05 450.2">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: Poppins-Regular, Poppins;
+        font-size: 26px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #07153a;
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke: #07153a;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+
+      .cls-4 {
+        fill: #e1e8f0;
+      }
+
+      .cls-2 {
+        font-family: Poppins-Bold, Poppins;
+        font-size: 28.85px;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <g id="Capa_1-2" data-name="Capa 1">
+    <path class="cls-3" d="M41.18,72.63v49.58c0,6.52,5.28,11.8,11.8,11.8h42.52"/>
+    <rect class="cls-4" width="526.05" height="72.62" rx="5.59" ry="5.59"/>
+    <text class="cls-2" transform="translate(65.14 47.88)"><tspan x="0" y="0">Controlling</tspan></text>
+    <rect class="cls-4" x="95.39" y="101.4" width="336.8" height="72.62" rx="5.59" ry="5.59"/>
+    <text class="cls-1" transform="translate(130.29 147.27)"><tspan x="0" y="0">Cost Center</tspan></text>
+    <path class="cls-3" d="M41.18,92.27v122.01c0,6.52,5.28,11.8,11.8,11.8h42.52"/>
+    <rect class="cls-4" x="95.39" y="193.46" width="336.8" height="72.62" rx="5.59" ry="5.59"/>
+    <text class="cls-1" transform="translate(130.29 239.33)"><tspan x="0" y="0">Product Costing </tspan></text>
+    <path class="cls-3" d="M41.18,184.33v122.01c0,6.52,5.28,11.8,11.8,11.8h42.52"/>
+    <rect class="cls-4" x="95.39" y="285.52" width="336.8" height="72.62" rx="5.59" ry="5.59"/>
+    <text class="cls-1" transform="translate(130.29 331.39)"><tspan x="0" y="0">Product Costing</tspan></text>
+    <path class="cls-3" d="M41.18,276.39v122.01c0,6.52,5.28,11.8,11.8,11.8h42.52"/>
+    <rect class="cls-4" x="95.39" y="377.58" width="336.8" height="72.62" rx="5.59" ry="5.59"/>
+    <text class="cls-1" transform="translate(130.29 423.45)"><tspan x="0" y="0">Internal Order</tspan></text>
+    <text class="cls-1" transform="translate(242.05 48.79)"><tspan x="0" y="0">Transactional data </tspan></text>
+  </g>
+</svg>

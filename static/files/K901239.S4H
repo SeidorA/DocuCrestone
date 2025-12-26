@@ -1,0 +1,7 @@
+BPINST       T S4H        1   9  17   0   0   0   0   0   0  19  754   .  0   0   0   0   0 400
+#U
+#/1/                          A   G   -   C   R   7   T   -   Z RELE EX.  _   _   _   _   _ CLI
+S4H f 0000 20251024224512 sid-hdb-s4h       s4hadm
+S4H e 0000 20251024224522 sid-hdb-s4h       s4hadm
+S4H < 0000 20251024224528 sid-hdb-s4h       s4hadm
+S4H E 0000 20251024224528 sid-hdb-s4h       s4hadm

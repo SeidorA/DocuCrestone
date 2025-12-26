@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 682.21 359.53">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: Poppins-Regular, Poppins;
+        font-size: 26px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #07153a;
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke: #07153a;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+
+      .cls-4 {
+        fill: #e1e8f0;
+      }
+
+      .cls-2 {
+        font-family: Poppins-Bold, Poppins;
+        font-size: 28.85px;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <g id="Capa_1-2" data-name="Capa 1">
+    <g>
+      <path class="cls-3" d="M46,71.84v49.58c0,6.52,5.28,11.8,11.8,11.8h42.52"/>
+      <rect class="cls-4" width="682.21" height="72.62" rx="5.59" ry="5.59"/>
+      <text class="cls-2" transform="translate(57.68 47.09)"><tspan x="0" y="0">Sales and Distribution</tspan></text>
+      <rect class="cls-4" x="100.22" y="102.79" width="403.65" height="72.62" rx="5.59" ry="5.59"/>
+      <text class="cls-1" transform="translate(135.11 146.48)"><tspan x="0" y="0">Sales Order</tspan></text>
+      <path class="cls-3" d="M46,91.48v122.01c0,6.52,5.28,11.8,11.8,11.8h42.52"/>
+      <rect class="cls-4" x="100.22" y="194.85" width="403.65" height="72.62" rx="5.59" ry="5.59"/>
+      <text class="cls-1" transform="translate(135.11 238.54)"><tspan x="0" y="0">Delivery </tspan></text>
+      <path class="cls-3" d="M46,183.54v122.01c0,6.52,5.28,11.8,11.8,11.8h42.52"/>
+      <rect class="cls-4" x="100.22" y="286.91" width="403.65" height="72.62" rx="5.59" ry="5.59"/>
+      <text class="cls-1" transform="translate(135.11 330.6)"><tspan x="0" y="0">Billing</tspan></text>
+      <text class="cls-1" transform="translate(389.86 48)"><tspan x="0" y="0">Transactional data </tspan></text>
+    </g>
+  </g>
+</svg>

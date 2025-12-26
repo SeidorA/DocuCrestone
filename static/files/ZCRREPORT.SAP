@@ -1,0 +1,81 @@
+DATE                                              20250902                                          210637
+RELEASE                                           740
+LOADED_AGRS                                       ZCRREPORT
+AGR_DEFINE                                        100ZCRREPORT                                                   CONSULTOR_0120250826132817000000000000000CONSULTOR_0120250829144028000000000000000
+AGR_1250                                          100ZCRREPORT                     000001F_BKPF_BEST-SH11009200    U  O000043Documento contable: Autorización cuentas para cuentas mayor
+AGR_1250                                          100ZCRREPORT                     000002F_BKPF_BUKT-SH11009200    U  O000047Documento contable: Autorización para sociedades
+AGR_1250                                          100ZCRREPORT                     000003F_BKPF_BUKT-SH11009201    U  O000050Documento contable: Autorización para sociedades
+AGR_1250                                          100ZCRREPORT                     000004F_BKPF_KOAT-SH11009200    U  O000054Documento contable: Autorización para clases de cuenta
+AGR_1250                                          100ZCRREPORT                     000005F_FAGL_LDRT-SH11009200    U  O000058Libro mayor: Autorización para ledger
+AGR_1250                                          100ZCRREPORT                     000006F_IT_ALV  T-SH11009200    U  O000065Visualiz.part.ind.: Modificar y grabar layouts
+AGR_1250                                          100ZCRREPORT                     000007F_LFA1_BUKT-SH11009200    U  O000068Acreedor: Autorización para sociedades
+AGR_1250                                          100ZCRREPORT                     000008F_SKA1_BEST-SH11009200    U  O000072Cuenta de mayor: Autorización de cuentas
+AGR_1250                                          100ZCRREPORT                     000009F_SKA1_BUKT-SH11009200    U  O000076Cuenta de mayor: Autorización para sociedades
+AGR_1250                                          100ZCRREPORT                     000010S_ALV_LAYOT-SH11009200    U  O000039Disposición estándar ALV
+AGR_1250                                          100ZCRREPORT                     000011S_BTCH_ADMT-SH11009200    U  O000017Proceso fondo: Responsable proceso fondo
+AGR_1250                                          100ZCRREPORT                     000012S_BTCH_JOBT-SH11009200    U  O000020Proceso fondo: Operaciones en jobs de fondo
+AGR_1250                                          100ZCRREPORT                     000013S_GUI     T-SH11009200    U  O000024Autorización p.actividades GUI
+AGR_1250                                          100ZCRREPORT                     000014S_RFC     T-SH11009200    U  O000004Verificación de autorización durante acceso RFC
+AGR_1250                                          100ZCRREPORT                     000015S_RFC     T-SH11009201    U  O000008Verificación de autorización durante acceso RFC
+AGR_1250                                          100ZCRREPORT                     000016S_TABU_DIST-SH11009200    U  O000027Actualiz.tablas (mediante herramientas estándar, como SM30)
+AGR_1250                                          100ZCRREPORT                     000017S_TABU_DIST-SH11009201    U  O000030Actualiz.tablas (mediante herramientas estándar, como SM30)
+AGR_1250                                          100ZCRREPORT                     000018S_TABU_NAMT-SH11009200    U  O000034Acceso a tablas mediante herramientas estándar genéricas
+AGR_1250                                          100ZCRREPORT                     000019S_TCODE   T-SH11009200    U  O000013Verificar código de transacción al inicio de la transacción
+AGR_1251                                          100ZCRREPORT                     000001F_BKPF_BEST-SH11009200    ACTVT     03                                                                              U  O000044
+AGR_1251                                          100ZCRREPORT                     000002F_BKPF_BEST-SH11009200    BRGRU     *                                                                               U  O000045
+AGR_1251                                          100ZCRREPORT                     000003F_BKPF_BUKT-SH11009200    ACTVT     03                                                                              U  O000048
+AGR_1251                                          100ZCRREPORT                     000004F_BKPF_BUKT-SH11009200    BUKRS     *                                                                               M  O000049
+AGR_1251                                          100ZCRREPORT                     000005F_BKPF_BUKT-SH11009201    ACTVT     02                                                                              U  O000051
+AGR_1251                                          100ZCRREPORT                     000006F_BKPF_BUKT-SH11009201    BUKRS     *                                                                               M  O000052
+AGR_1251                                          100ZCRREPORT                     000007F_BKPF_KOAT-SH11009200    ACTVT     03                                                                              U  O000055
+AGR_1251                                          100ZCRREPORT                     000008F_BKPF_KOAT-SH11009200    KOART     K                                                                               M  O000056
+AGR_1251                                          100ZCRREPORT                     000009F_BKPF_KOAT-SH11009200    KOART     S                                                                               M  O000056
+AGR_1251                                          100ZCRREPORT                     000010F_FAGL_LDRT-SH11009200    ACTVT     03                                                                              U  O000059
+AGR_1251                                          100ZCRREPORT                     000011F_FAGL_LDRT-SH11009200    BUKRS     *                                                                               M  O000060
+AGR_1251                                          100ZCRREPORT                     000012F_FAGL_LDRT-SH11009200    GLRLDNR   *                                                                               U  O000061
+AGR_1251                                          100ZCRREPORT                     000013F_FAGL_LDRT-SH11009200    GLRRCTY   0                                                                               U  O000062
+AGR_1251                                          100ZCRREPORT                     000014F_FAGL_LDRT-SH11009200    GLRVERS   *                                                                               U  O000063
+AGR_1251                                          100ZCRREPORT                     000015F_IT_ALV  T-SH11009200    ACTVT     01                                                                              U  O000066
+AGR_1251                                          100ZCRREPORT                     000016F_IT_ALV  T-SH11009200    ACTVT     02                                                                              U  O000066
+AGR_1251                                          100ZCRREPORT                     000017F_IT_ALV  T-SH11009200    ACTVT     03                                                                              U  O000066
+AGR_1251                                          100ZCRREPORT                     000018F_IT_ALV  T-SH11009200    ACTVT     70                                                                              U  O000066
+AGR_1251                                          100ZCRREPORT                     000019F_LFA1_BUKT-SH11009200    ACTVT     03                                                                              U  O000069
+AGR_1251                                          100ZCRREPORT                     000020F_LFA1_BUKT-SH11009200    BUKRS     *                                                                               M  O000070
+AGR_1251                                          100ZCRREPORT                     000021F_SKA1_BEST-SH11009200    ACTVT     03                                                                              U  O000073
+AGR_1251                                          100ZCRREPORT                     000022F_SKA1_BEST-SH11009200    BRGRU     *                                                                               U  O000074
+AGR_1251                                          100ZCRREPORT                     000023F_SKA1_BUKT-SH11009200    ACTVT     03                                                                              U  O000077
+AGR_1251                                          100ZCRREPORT                     000024F_SKA1_BUKT-SH11009200    BUKRS     *                                                                               M  O000078
+AGR_1251                                          100ZCRREPORT                     000025S_ALV_LAYOT-SH11009200    ACTVT     23                                                                              U  O000040
+AGR_1251                                          100ZCRREPORT                     000026S_BTCH_ADMT-SH11009200    BTCADMIN  Y                                                                               U  O000018
+AGR_1251                                          100ZCRREPORT                     000027S_BTCH_JOBT-SH11009200    JOBACTION RELE                                                                            U  O000021
+AGR_1251                                          100ZCRREPORT                     000028S_BTCH_JOBT-SH11009200    JOBGROUP  *                                                                               U  O000022
+AGR_1251                                          100ZCRREPORT                     000029S_GUI     T-SH11009200    ACTVT     61                                                                              U  O000025
+AGR_1251                                          100ZCRREPORT                     000030S_RFC     T-SH11009200    ACTVT     16                                                                              U  O000005
+AGR_1251                                          100ZCRREPORT                     000031S_RFC     T-SH11009200    RFC_NAME  ZCRESTONEABAP                                                                   U  O000006
+AGR_1251                                          100ZCRREPORT                     000032S_RFC     T-SH11009200    RFC_TYPE  FUGR                                                                            U  O000007
+AGR_1251                                          100ZCRREPORT                     000033S_RFC     T-SH11009201    ACTVT     16                                                                              U  O000009
+AGR_1251                                          100ZCRREPORT                     000034S_RFC     T-SH11009201    RFC_NAME  SYSTEM_RESET_RFC_SERVER                                                         U  O000010
+AGR_1251                                          100ZCRREPORT                     000035S_RFC     T-SH11009201    RFC_NAME  Z_CRES_IS_REMOTE_REPORT                                                         U  O000010
+AGR_1251                                          100ZCRREPORT                     000036S_RFC     T-SH11009201    RFC_TYPE  FUNC                                                                            U  O000011
+AGR_1251                                          100ZCRREPORT                     000037S_TABU_DIST-SH11009200    ACTVT     03                                                                              U  O000028
+AGR_1251                                          100ZCRREPORT                     000038S_TABU_DIST-SH11009200    DICBERCLS &NC&                                                                            U  O000029
+AGR_1251                                          100ZCRREPORT                     000039S_TABU_DIST-SH11009201    ACTVT     03                                                                              U  O000031
+AGR_1251                                          100ZCRREPORT                     000040S_TABU_DIST-SH11009201    DICBERCLS SS                                                                              U  O000032
+AGR_1251                                          100ZCRREPORT                     000041S_TABU_NAMT-SH11009200    ACTVT     03                                                                              U  O000035
+AGR_1251                                          100ZCRREPORT                     000042S_TABU_NAMT-SH11009200    TABLE     TRDIR                                                                           U  O000036
+AGR_1251                                          100ZCRREPORT                     000043S_TABU_NAMT-SH11009200    TABLE     TRDIRT                                                                          U  O000036
+AGR_1251                                          100ZCRREPORT                     000044S_TABU_NAMT-SH11009200    TABLE     TSTC                                                                            U  O000036
+AGR_1251                                          100ZCRREPORT                     000045S_TABU_NAMT-SH11009200    TABLE     VARID                                                                           U  O000036
+AGR_1251                                          100ZCRREPORT                     000046S_TCODE   T-SH11009200    TCD       FB02                                                                            U  O000014
+AGR_1252                                          100ZCRREPORT                     000001$KOART
+AGR_1252                                          100ZCRREPORT                     000002$BUKRS
+AGR_TEXTS                                         100ZCRREPORT                     S00000Rol report Crestone
+AGR_TEXTS                                         100ZCRREPORT                     S00001Rol report Crestone
+AGR_FLAGS                                         100ZCRREPORT                     COLL_AGR  USER_PI     20250313173104USER_PI     20250313173104
+AGR_FLAGS                                         100ZCRREPORT                     DEVCLASS  USER_PI     20250313173104USER_PI     20250313173104
+AGR_FLAGS                                         100ZCRREPORT                     FORCE_MIX USER_PI     20250313173402CONSULTOR_0120250829144028
+AGR_FLAGS                                         100ZCRREPORT                     FORCE_YEL EX_BASIS_PI 20250813165158CONSULTOR_0120250829144028
+AGR_FLAGS                                         100ZCRREPORT                     MASTER_LANUSER_PI     20250313173104USER_PI     20250313173104S
+AGR_FLAGS                                         100ZCRREPORT                     RESP_USER USER_PI     20250313173104USER_PI     20250313173104
+AGR_TIME                                          100ZCRREPORT                     PROFILE   CONSULTOR_0120250826132817000000000000000CONSULTOR_0120250829144028000000000000000
+AGR_LSD                                           100ZCRREPORT                                                   S

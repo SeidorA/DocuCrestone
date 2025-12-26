@@ -1,0 +1,314 @@
+---
+sidebar_position: 9
+iconName: "Fabric"
+useBrand: true
+title: "Microsoft Fabric"
+description: "Create a node to export data from a source and load it into a destination."
+---
+
+## Datos Obligatorios Necesarios
+
+Para conectarte a Microsoft Fabric mediante API necesitás 4 datos obligatorios:  
+
+| Dato | Descripción | Ubicación |
+|-------|---|---|
+| Tenant ID | Identificador único del inquilino de Azure AD. | Microsoft Entra ID → Overview |
+| Client ID | Identificador único de la aplicación registrada en Azure AD. | App Registrations → Tu aplicación |
+| Client Secret | Secreto generado para la aplicación registrada en Azure AD. | App Registrations → Certificates & Secrets |
+| Workspace ID | Identificador único del espacio de trabajo de Microsoft Fabric. | URL del workspace en Fabric |
+| lakehouse_id | Identifica el Lakehouse específico | URL del Lakehouse en Fabric |
+
+
+---
+
+## Cómo Obtener el Tenant ID
+1. Iniciá sesión en el [portal de Microsoft Entra ID](https://portal.azure.com).
+2. En el menú lateral, buscar y seleccionar **Microsoft Entra ID**
+![Microsoft Entra ID](/img/Conections/fabric/tenenantid.png)
+3. En el panel de **Overview** vas a ver tu Tenant ID
+
+Ejemplo:
+
+```java
+Tenant ID: c25f1c67-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+**Copiar y guardar este valor.**
+
+---
+
+## Cómo Crear una App Registration 
+(Client ID + Client Secret)
+
+### Crear la Aplicación
+1. En el portal de Azure, dentro de **Microsoft Entra ID**, seleccionar **App registrations** en el menú lateral.
+2. Hacer clic en **New registration**.
+3. Completar los campos:
+   - **Name**: Ingresar un nombre descriptivo para la aplicación.
+   - **Supported account types**: Seleccionar "Accounts in this organizational directory only".
+   - **Redirect URI**: Dejar en blanco.
+4. Hacer clic en **Register**.
+
+### Obtener el Client ID
+Una vez creada la aplicación:
+    1.	Verás la página de Overview de tu aplicación
+    2.	Copiar el valor de Application (client) ID
+
+Ejemplo:
+
+```java
+Application (client) ID: 59c4c6e3-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+Copiar y guardar este valor.
+
+
+### Crear el Client Secret
+
+1.	En el menú lateral de tu aplicación, ir a Certificates & secrets
+2.	Hacer clic en + New client secret
+3.	Configurar: 
+    - Description: crestone-onelake-secret (o cualquier descripción)
+    - Expires: Seleccionar 1 year (o el período deseado)
+4.	Hacer clic en Add
+5.	IMPORTANTE: Copiar inmediatamente el Value del secret
+
+Ejemplo:
+
+```java
+Value: abc123DEF456~xxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+:::warning
+Este valor se muestra UNA SOLA VEZ. Si no lo copiás ahora, tendrás que crear un nuevo secret.
+Copiar y guardar este valor de forma segura.
+:::
+
+---
+
+## Configurar Permisos de la Aplicación
+Sin estos permisos, la aplicación recibirá errores 403 (Acceso Denegado).
+
+1.	En tu aplicación, ir a API permissions (en el menú lateral)
+2.	Hacer clic en + Add a permission
+3.	Buscar y seleccionar Azure Storage
+4.	Seleccionar Delegated permissions
+5.	Marcar el permiso: user_impersonation
+6.	Hacer clic en Add permissions
+7.	IMPORTANTE: Hacer clic en Grant admin consent for [Tu organización]
+8.	Confirmar haciendo clic en Yes
+
+**Verificación:**
+Los permisos deben aparecer con un check verde (✓) en la columna Status.
+
+---
+
+## Cómo Obtener el Workspace ID
+1. Ingresar a Microsoft Fabric: [fabric.microsoft](https://fabric.microsoft.com)
+2.	Navegar a tu workspace (ej: "W1")
+
+![Navegar Workspace ID](/img/Conections/fabric/work.png)
+
+3.	Observar la URL del navegador
+
+**La URL tendrá este formato:**
+
+```java 
+https://app.fabric.microsoft.com/groups/31cd18a4-xxxx-xxxx-xxxx-xxxxxxxxxxxx/...
+```
+
+![URL Fabric](/img/Conections/fabric/url.png)
+
+**El Workspace ID está después de /groups/:**
+
+```java
+Workspace ID: 31cd18a4-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+**Copiar y guardar este valor.**
+
+---
+
+## Cómo Obtener el Lakehouse ID
+1.	Dentro de tu workspace en Fabric, hacer clic en tu Lakehouse
+![Lakehouse](/img/Conections/fabric/lake.png)
+2.	Observar la URL del navegador
+
+**Observar la URL del navegador**
+
+
+```java 
+https://app.fabric.microsoft.com/groups/[workspace-id]/lakehouses/a1b2c3d4-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+```
+![URL Lakehouse](/img/Conections/fabric/Imagen5.png)
+
+**El Lakehouse ID está después de /lakehouses/:**
+
+```java
+Lakehouse ID: a1b2c3d4-xxxx-xxxx-xxxx-xxxxxxxxxxxx	
+```
+:::warning
+No confundir el Lakehouse con el Punto de Conexión (Endpoint).
+:::
+
+**Diferencia entre Lakehouse y Punto de Conexión**
+En Microsoft Fabric, cuando creás un Lakehouse, automáticamente se generan DOS recursos:
+
+![Recursos Fabric](/img/Conections/fabric/punto.png)
+
+**LAKEHOUSE (icono de casa con olas )**
+- **Nombre visual:** DataflowsStagingLakehouse (Lakehouse)
+- **Función:** Almacenamiento físico en OneLake
+- **Contiene:**
+
+    - Carpeta Files/
+    - Carpeta Tables/
+    - Delta Lake (archivos .parquet)
+    - _delta_log
+- URL tipo ```.../lakehouses/[lakehouse-id]```
+- **Se usa para**: API REST de OneLake, lectura/escritura de archivos
+- ESTE ES EL QUE NECESITÁS PARA LA API
+
+![Recursos Fabric](/img/Conections/fabric/api.png)
+
+**PUNTO DE CONEXIÓN (icono casa con 6 ventanas)**
+
+- **Nombre visual:** DataflowsStagingLakehouse (Punto de conexión)
+- **Función:** Vista SQL del Lakehouse
+- **Permite:** Consultas SELECT sobre las tablas Delta
+- **URL tipo:** .../mirroredwarehouses/[warehouse-id]
+- **Se usa para:** Power BI, SQL Endpoints, Notebooks
+- **NO SE USA PARA LA API DE ONELAKE**
+
+Verificación: La URL debe contener ```/lakehouses/ (NO /mirroredwarehouses/ ni /sqlendpoints/)```
+Copiar y guardar este valor.
+
+--- 
+
+## Resumen de Configuración
+
+Al finalizar, deberías tener estos 5 valores:
+
+| Dato | Ejemplo |
+|-------|---|
+| Tenant ID | c25f1c67-xxxx-xxxx-xxxx-xxxxxxxxxxxx |
+| Client ID | 59c4c6e3-xxxx-xxxx-xxxx-xxxxxxxxxxxx |
+| Client Secret | abc123DEF456~xxxxxxxxxxxxxxxxxxxxxxxxx |
+| Workspace ID | 31cd18a4-xxxx-xxxx-xxxx-xxxxxxxxxxxx |
+| Lakehouse ID | a1b2c3d4-xxxx-xxxx-xxxx-xxxxxxxxxxxx |
+
+:::tip
+**Seguridad** Nunca compartas estos valores públicamente. Guardalos en un lugar seguro (como un administrador de contraseñas o variables de entorno).
+:::
+
+---
+
+## Permisos necesarios en Worspace
+
+**Importante**: Esta configuración debe realizarla alguien con permisos de Admin o Member en el workspace.
+
+**¿Por qué es necesario?**
+Microsoft Fabric tiene DOS capas de seguridad independientes:
+1.	Permisos del Workspace (quién puede ver y administrar recursos)
+2.	Permisos de OneLake (quién puede leer/escribir datos en el Lakehouse)
+
+Ambas deben configurarse por separado.
+
+### Agregar la App como Miembro del Workspace
+1.	Entrar a tu Workspace (ej: W1)
+2.	En la esquina superior derecha, hacer clic en Administrar acceso
+
+![Administrar acceso](/img/Conections/fabric/workspace.png)
+
+3.	Hacer clic en + Agregar personas o grupos
+
+![Administrar acceso](/img/Conections/fabric/Imagen9.png)
+
+4.	En el buscador, escribir el nombre de tu aplicación creada en azure : crestone-onelake 
+
+![Buscar App](/img/Conections/fabric/Imagen10.png)
+
+- o	También podés buscarla por el **client_id** si no aparece por nombre
+
+5.	Seleccionar el rol apropiado: 
+    - Colaborador (recomendado para lectura/escritura)
+    - Admin (si necesita gestionar el workspace completo)
+
+    ![Administrar acceso](/img/Conections/fabric/Imagen11.png)
+
+6.	Hacer clic en Agregar
+**Verificación:** La aplicación crestone-onelake debe aparecer en la lista de miembros del workspace con el rol asignado.
+
+![Miembros del Workspace](/img/Conections/fabric/Imagen12.png)
+
+---
+
+## Configurar Permisos en el Lakehouse
+(OneLake Security)
+
+:::warning
+Sin estos permisos, la API devolverá errores 403 aunque la app tenga acceso al workspace.
+:::
+
+**¿Qué son los Permisos de OneLake?**
+
+Son permisos específicos para leer/escribir archivos en el almacenamiento físico del Lakehouse. Son independientes de los permisos del workspace.
+
+### Acceder a la Configuración de Seguridad de OneLake
+1.	Dentro de tu workspace, hacer clic en el **Lakehouse** 
+    - Nombre: DataflowsStagingLakehouse (Lakehouse)
+    - No confundir con el "Punto de conexión"
+2.	En la esquina superior derecha, hacer clic en Administrar seguridad de **OneLake** (versión preliminar)
+
+
+### Crear o Modificar el Grupo de Permisos
+Se abrirá la pantalla de Roles de OneLake:
+![Permisos](/img/Conections/fabric/Imagen13.png)
+
+**Roles de OneLake**
+- DefaultReader
+- (aquí podés crear nuevos roles)
+
+**Opción A: Crear un Nuevo Rol**
+1.	Hacer clic en + Nuevo rol
+![Rol](/img/Conections/fabric/Imagen14.png)
+
+2.	Configurar: 
+- Nombre del rol: crestoneConnector (o el nombre que prefieras)
+- Tipo de rol: Seleccionar Conceder
+- Alcance de datos: 
+    - Seleccionar Todos los datos
+    - O especificar carpetas específicas si querés limitar el acceso
+
+**Opción B:** Usar un Rol Existente
+Si ya existe un rol apropiado, podés modificarlo directamente.
+
+### Agregar Miembros al Rol
+1.	Dentro del rol (crestoneConnector o el que hayas creado)
+2.	Hacer clic en + Agregar miembros
+3.	Buscar y agregar: 
+- crestone-onelake (tu App Registration)
+- Tipo de acceso: ReadWrite 
+
+4.	Opcionalmente, agregar tu usuario personal: 
+- Crestone (tu cuenta)
+- Tipo de acceso: Admin 
+
+### Configuración Final Recomendada
+| Miembro | Rol | Permisos |    Alcance    |
+|---------|-----|----------|---------------|
+| crestone-onelake | crestoneConnector | ReadWrite | Todos los datos |
+
+**Verificación**
+1.	Hacer clic en Guardar o Aplicar
+2.	Verificar que  el rol  aparezca con los permisos correctos
+![Verificación](/img/Conections/fabric/Imagen15.png)
+3.	Los cambios pueden tardar 1-2 minutos en aplicarse
+
+---
+
+## Resumen de Configuración de Permisos
+Al finalizar, deberías tener:
+- App Registration tiene permisos de API en Azure (Azure Storage - user_impersonation)
+- App Registration es Contributor en el Workspace
+- App Registration tiene permisos ReadWrite en OneLake Security
+- Tu usuario tiene permisos Admin en OneLake Security (opcional pero recomendado)
+
+ Si falta alguno de estos pasos, la API fallará con errores 403 (Forbidden).

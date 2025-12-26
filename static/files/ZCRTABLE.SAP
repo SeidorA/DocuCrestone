@@ -1,0 +1,51 @@
+DATE                                              20250902                                          210604
+RELEASE                                           740
+LOADED_AGRS                                       ZCRTABLE
+AGR_DEFINE                                        100ZCRTABLE                                                    CONSULTOR_0120250826132817000000000000000CONSULTOR_0120250829143737000000000000000
+AGR_1250                                          100ZCRTABLE                      000001S_BTCH_ADMT-SH11009100    U  O000014Proceso fondo: Responsable proceso fondo
+AGR_1250                                          100ZCRTABLE                      000002S_BTCH_JOBT-SH11009100    U  O000017Proceso fondo: Operaciones en jobs de fondo
+AGR_1250                                          100ZCRTABLE                      000003S_DSAUTH  T-SH11009100    U  O000030DataServices: Auth Object
+AGR_1250                                          100ZCRTABLE                      000004S_RFC     T-SH11009100    U  O000004Verificación de autorización durante acceso RFC
+AGR_1250                                          100ZCRTABLE                      000005S_RFC     T-SH11009101    U  O000008Verificación de autorización durante acceso RFC
+AGR_1250                                          100ZCRTABLE                      000006S_SDSAUTH T-SH11009100    U  O000034S_SDSAUTH
+AGR_1250                                          100ZCRTABLE                      000007S_TABU_DIST-SH11009100    U  O000021Actualiz.tablas (mediante herramientas estándar, como SM30)
+AGR_1250                                          100ZCRTABLE                      000008S_TABU_NAMT-SH11009100    U  O000025Acceso a tablas mediante herramientas estándar genéricas
+AGR_1251                                          100ZCRTABLE                      000001S_BTCH_ADMT-SH11009100    BTCADMIN  Y                                                                               U  O000015
+AGR_1251                                          100ZCRTABLE                      000002S_BTCH_JOBT-SH11009100    JOBACTION RELE                                                                            U  O000018
+AGR_1251                                          100ZCRTABLE                      000003S_BTCH_JOBT-SH11009100    JOBGROUP  *                                                                               U  O000019
+AGR_1251                                          100ZCRTABLE                      000004S_DSAUTH  T-SH11009100    ACTVT     16                                                                              U  O000031
+AGR_1251                                          100ZCRTABLE                      000005S_RFC     T-SH11009100    ACTVT     16                                                                              U  O000005
+AGR_1251                                          100ZCRTABLE                      000006S_RFC     T-SH11009100    RFC_NAME  /SAPDS/RS_BASIS                                                                 U  O000006
+AGR_1251                                          100ZCRTABLE                      000007S_RFC     T-SH11009100    RFC_NAME  S1EM                                                                            U  O000006
+AGR_1251                                          100ZCRTABLE                      000008S_RFC     T-SH11009100    RFC_NAME  SDIFRUNTIME                                                                     U  O000006
+AGR_1251                                          100ZCRTABLE                      000009S_RFC     T-SH11009100    RFC_NAME  SDTX                                                                            U  O000006
+AGR_1251                                          100ZCRTABLE                      000010S_RFC     T-SH11009100    RFC_NAME  Z_CRES_READ_TABLE                                                               U  O000006
+AGR_1251                                          100ZCRTABLE                      000011S_RFC     T-SH11009100    RFC_TYPE  FUGR                                                                            U  O000007
+AGR_1251                                          100ZCRTABLE                      000012S_RFC     T-SH11009101    ACTVT     16                                                                              U  O000009
+AGR_1251                                          100ZCRTABLE                      000013S_RFC     T-SH11009101    RFC_NAME  DDIF_FIELDINFO_GET                                                              U  O000010
+AGR_1251                                          100ZCRTABLE                      000014S_RFC     T-SH11009101    RFC_NAME  RFCPING                                                                         U  O000010
+AGR_1251                                          100ZCRTABLE                      000015S_RFC     T-SH11009101    RFC_NAME  RFC_READ_TABLE                                                                  U  O000010
+AGR_1251                                          100ZCRTABLE                      000016S_RFC     T-SH11009101    RFC_NAME  Z_CRES_READ_TABLE                                                               U  O000010
+AGR_1251                                          100ZCRTABLE                      000017S_RFC     T-SH11009101    RFC_TYPE  FUNC                                                                            U  O000011
+AGR_1251                                          100ZCRTABLE                      000018S_SDSAUTH T-SH11009100    ACTVT     16                                                                              U  O000035
+AGR_1251                                          100ZCRTABLE                      000019S_TABU_DIST-SH11009100    ACTVT     03                                                                              U  O000022
+AGR_1251                                          100ZCRTABLE                      000020S_TABU_DIST-SH11009100    DICBERCLS *                                                                               U  O000023
+AGR_1251                                          100ZCRTABLE                      000021S_TABU_NAMT-SH11009100    ACTVT     03                                                                              U  O000026
+AGR_1251                                          100ZCRTABLE                      000022S_TABU_NAMT-SH11009100    TABLE     DD02V                                                                           U  O000027
+AGR_1251                                          100ZCRTABLE                      000023S_TABU_NAMT-SH11009100    TABLE     DD10B                                                                           U  O000027
+AGR_1251                                          100ZCRTABLE                      000024S_TABU_NAMT-SH11009100    TABLE     DD17S                                                                           U  O000027
+AGR_1251                                          100ZCRTABLE                      000025S_TABU_NAMT-SH11009100    TABLE     DD27S                                                                           U  O000027
+AGR_1251                                          100ZCRTABLE                      000026S_TABU_NAMT-SH11009100    TABLE     DDLDEPENDENCY                                                                   U  O000027
+AGR_1251                                          100ZCRTABLE                      000027S_TABU_NAMT-SH11009100    TABLE     ENLFDIR                                                                         U  O000027
+AGR_1251                                          100ZCRTABLE                      000028S_TABU_NAMT-SH11009100    TABLE     IFICOMPANYCODE                                                                  U  O000027
+AGR_1251                                          100ZCRTABLE                      000029S_RFC     T-SH11009101    RFC_NAME  RFC_METADATA_GET                                                                U  O000010
+AGR_TEXTS                                         100ZCRTABLE                      S00000Rol Crestone Tablas
+AGR_TEXTS                                         100ZCRTABLE                      S00001Rol Crestone Tablas
+AGR_FLAGS                                         100ZCRTABLE                      COLL_AGR  USER_PI     20250313171555USER_PI     20250313171555
+AGR_FLAGS                                         100ZCRTABLE                      DEVCLASS  USER_PI     20250313171555USER_PI     20250313171555
+AGR_FLAGS                                         100ZCRTABLE                      FORCE_MIX USER_PI     20250313172118CONSULTOR_0120250829143737
+AGR_FLAGS                                         100ZCRTABLE                      FORCE_YEL EX_BASIS_PI 20250813165158CONSULTOR_0120250829143737
+AGR_FLAGS                                         100ZCRTABLE                      MASTER_LANUSER_PI     20250313171555USER_PI     20250313171555S
+AGR_FLAGS                                         100ZCRTABLE                      RESP_USER USER_PI     20250313171555USER_PI     20250313171555
+AGR_TIME                                          100ZCRTABLE                      PROFILE   CONSULTOR_0120250826132817000000000000000CONSULTOR_0120250829143737000000000000000
+AGR_LSD                                           100ZCRTABLE                                                    S

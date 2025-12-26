@@ -1,0 +1,46 @@
+---
+title: "Release Notes"
+sidebar_position: 1
+---
+import React from 'react';
+import {Sliderelece, Previouslyedreace} from './slider/Sliderprimarry.tsx'
+import items from './news.json'
+
+
+
+export default function CustomIndex() {
+  React.useEffect(() => {
+    const sidebar = document.querySelector('.theme-doc-sidebar-container');
+    if (sidebar) {
+      sidebar.style.display = 'none';
+    }
+    return () => {
+      if (sidebar) {
+        sidebar.style.display = 'flex';
+      }
+    };
+  }, []);
+
+  
+  
+  const releases = [
+      ...Object.keys(items).map(version => ({
+        version,
+        name: items[version].version,
+        link: version.replace(/\./g, ''), // o ajusta según tu lógica de links
+        date: items[version].date,
+        description: items[version].description
+      })),
+  ];
+  // Obtiene la versión más reciente (la que está más arriba en el JSON)
+  const currentrelece = Object.keys(items)[Object.keys(items).length - 1];
+  return (
+    
+    
+      <>
+      <Sliderelece version={currentrelece} items={items[currentrelece].news} title={items[currentrelece].version} />
+      <Previouslyedreace  releases={releases} />
+      </>
+  );
+}
+

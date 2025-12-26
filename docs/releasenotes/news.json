@@ -1,0 +1,154 @@
+{
+  "189": {
+    "version": "1.89.50",
+    "link": "189",
+    "date": "10/11/2025",
+    "description": "Over the last few weeks we’ve been steadily expanding what you can do with Crestone, and this update brings another set of powerful improvements. The platform is becoming an even stronger hub for managing end-to-end data pipelines: SAP extractions run more efficiently, SQL Server On Premise is easier to plug in as a destination, and you gain greater flexibility and control over how data is written and maintained across your environments.",
+    "news": [
+      {
+          "title_slide": "CDC Tables in SAP ABAP – Faster, Smarter Loads",
+          "description": "Crestone now supports Change Data Capture (CDC) on SAP ABAP tables — extracting only inserts, updates, and deletes, not full datasets.",
+          "icon": "SAP"
+        },
+        {
+          "title_slide": "SQL Server On-Premise as Destination",
+          "description": "Configure SQL Server On-Premise directly from the UI—select server, database, schema, and table in a guided flow, no scripts required. Crestone can also auto-create schemas and tables during setup, enabling faster pilots and new workloads.",
+          "icon": "MSSQL"
+        },
+        {
+          "title_slide": "Full Support for non-Unicode SAP Systems",
+          "description": "Crestone now seamlessly supports non-Unicode SAP systems by auto-detecting the system type and adjusting field lengths using byteLength, ensuring consistent, readable data across all SAP environments.",
+          "icon": "SAP"
+        },
+        {
+          "title_slide": "New Switch for Data Handling in Destinations",
+          "description": "Control how each destination manages existing data with a new switch: choose between Full Refresh (delete and reload) or Append (add new records). Crestone handles all operations safely in the backend—ideal for snapshots, historical tables, and flexible loading strategies.",
+          "icon": "Crestone"
+        }
+    ]
+  },
+  "180": {
+    "version": "1.80.00",
+    "link": "180",
+    "date": "28/05/2025",
+    "description": "Main new features in this version 1.80.00",
+    "news": [
+      {
+    "title_slide": "BAPI Integration",
+    "description": "Crestone now supports data extraction through BAPI (Business Application Programming Interface). This allows for structured access to SAP data via remote-enabled function modules, providing more flexibility and control in your integrations.",
+    "icon": "SAP"
+  },
+  {
+    "title_slide": "CDS View Support",
+    "description": "We've added native support for CDS (Core Data Services) Views, enabling high-performance queries directly on SAP-defined virtual data models. This is ideal for accessing pre-joined and semantically rich datasets from SAP HANA or ABAP.",
+    "icon": "SAP"
+  },
+  {
+    "title_slide": "New Destination: File Server",
+    "description": "Crestone now supports File Server as a destination, allowing direct export of datasets to shared drives or local infrastructure environments.",
+    "icon": "file"
+  },
+  {
+    "title_slide": "Enhanced Join Capabilities",
+    "description": "You can now define joins using multiple fields across multiple tables. This enhancement provides more precise data modeling and better alignment with complex data relationships in SAP and other sources.",
+    "icon": "tab"
+  }
+    ]
+  },
+  "170":{
+    "version": "1.70.00",
+    "link": "170",
+    "date": "18/04/2025",
+    "description": "Main new features in this version 1.70.00",
+    "news": [
+      {
+    "title_slide": "Microsoft Azure SQL Connection",
+    "description": "A new destination is now available in Crestone: send your data directly to Azure SQL with ease.",
+    "icon": "AzureSql"
+    },{
+      "title_slide": "SAP Report Extraction",
+      "description": "You can now extract SAP reports and send them to any of your configured destinations.",
+      "icon": "SAP"
+    },{
+      "title_slide": "Dynamic Variables for Filters",
+      "description": "Smarter nodes: use Python code to define dynamic dates in your WHERE clauses—no more monthly edits needed.",
+      "icon": "Bolt"
+    }  
+    ]
+  },
+  "150":{
+    "version": "1.50.00",
+    "link": "150",
+    "date": "21/03/2025",
+    "description": "Main new features in this version 1.50.00",
+    "news":[
+      {
+        "title_slide": "Azure Integration",
+        "description": "We have integrated Azure as a destination, making it easy to store and analyze data in the cloud.",
+        "icon": "azure"
+      },{
+        "title_slide": "Databricks Integration",
+        "description": "Now you can use Databricks as a destination, optimizing the processing and analysis of large volumes of data.",
+        "icon": "Databricks"
+      },{
+        "title_slide": "OData Integration",
+        "description": "We have incorporated OData as a new source, allowing data extraction from multiple sources. Compatible with SAP ERP, SAP Business One and SAP ByDesign, ensuring frictionless integration. ",
+        "icon": "OData"
+      },{
+        "title_slide": "Import and export of jobs",
+        "description": "Now you can export complete jobs with all their nodes and sequences in a single file, facilitating migration and configuration. This maximizes reusability, reduces implementation times and prevents errors.",
+        "icon": "arrowDownToLine"
+      }
+    ]
+  }, 
+  "120":{
+    "version": "1.20.00",
+    "link": "150",
+    "date": "22/02/2025",
+    "description": "A new destination is now available in Crestone: send your data directly to Azure SQL with ease.",
+    "news":[
+      {
+        "title_slide": "Templates for common data job",
+        "description": "Data integration jobs.",
+        "icon": "SAP"
+      },{
+        "title_slide": "SAP ABAP",
+        "description": "From this version onwards, you will have the possibility to connect to the logical layer of SAP. Giving the user the possibility to visualize the description and type of data of each and data type of each of the fields, through the metadata.",
+        "icon": "SAP"
+      },{
+        "title_slide": "Snowflake Connection",
+        "description": "In keeping with our commitment to provide users with new possibilities for connection today we present the possibility of using Snowflake as a destination, allowing the use of tables and stages. destination, allowing the use of tables and stages.",
+        "icon": "Snowflake"
+      }
+    ]
+  },
+  "110":{
+      "version": "1.10.00",
+    "link": "110",
+    "date": "16/12/2024",
+    "description": "A new destination is now available in Crestone: send your data directly to Azure SQL with ease.",
+    "news":[
+      {
+        "title_slide": "Drag and drop functionality",
+        "description": "Easily drag and drop data sources, transformations, and destinations.",
+        "icon": "clickTab"
+      },{
+        "title_slide": "Real-time data integration",
+        "description": "Essly synchronize data in real-time between different connections.",
+        "icon": "clock"
+      },{
+        "title_slide": "Templates for common data job",
+        "description": "Data integration jobs.",
+        "icon": "SAP"
+      },{
+        "title_slide": "Simplified interface",
+        "description": "Intuitive and user-friendly interfaces for easy data integration.",
+        "icon": "charScreen"
+      },{
+        "title_slide": "Error prevention and recovery",
+        "description": "Built-in error prevention and recovery mechanisms for seamless data integration.",
+        "icon": "triangleExclamation" 
+      }
+    ]
+  }
+}

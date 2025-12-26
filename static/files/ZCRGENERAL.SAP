@@ -1,0 +1,21 @@
+DATE                                              20250902                                          210544
+RELEASE                                           740
+LOADED_AGRS                                       ZCRGENERAL
+AGR_DEFINE                                        100ZCRGENERAL                                                  CONSULTOR_0120250826132816000000000000000CONSULTOR_0120250829144057000000000000000
+AGR_1250                                          100ZCRGENERAL                    000001S_RFC     T-SH11008700    U  O000004Verificación de autorización durante acceso RFC
+AGR_1251                                          100ZCRGENERAL                    000001S_RFC     T-SH11008700    ACTVT     16                                                                              U  O000005
+AGR_1251                                          100ZCRGENERAL                    000002S_RFC     T-SH11008700    RFC_NAME  OCS_CRM                                                                         U  O000006
+AGR_1251                                          100ZCRGENERAL                    000003S_RFC     T-SH11008700    RFC_NAME  RFC1                                                                            U  O000006
+AGR_1251                                          100ZCRGENERAL                    000004S_RFC     T-SH11008700    RFC_NAME  SDTX                                                                            U  O000006
+AGR_1251                                          100ZCRGENERAL                    000005S_RFC     T-SH11008700    RFC_NAME  SRFC                                                                            U  O000006
+AGR_1251                                          100ZCRGENERAL                    000006S_RFC     T-SH11008700    RFC_NAME  SYST                                                                            U  O000006
+AGR_1251                                          100ZCRGENERAL                    000007S_RFC     T-SH11008700    RFC_TYPE  FUGR                                                                            U  O000007
+AGR_TEXTS                                         100ZCRGENERAL                    E00000Authorization Objects for Crestone Access
+AGR_FLAGS                                         100ZCRGENERAL                    COLL_AGR  BPINST      20250312124430BPINST      20250312124430
+AGR_FLAGS                                         100ZCRGENERAL                    DEVCLASS  BPINST      20250312124430BPINST      20250312124430
+AGR_FLAGS                                         100ZCRGENERAL                    FORCE_MIX BPINST      20250312124829CONSULTOR_0120250829144057
+AGR_FLAGS                                         100ZCRGENERAL                    FORCE_YEL EX_BASIS_PI 20250813165235CONSULTOR_0120250829144057
+AGR_FLAGS                                         100ZCRGENERAL                    MASTER_LANBPINST      20250312124430BPINST      20250312124430E
+AGR_FLAGS                                         100ZCRGENERAL                    RESP_USER BPINST      20250312124430BPINST      20250312124430
+AGR_TIME                                          100ZCRGENERAL                    PROFILE   CONSULTOR_0120250826132816000000000000000CONSULTOR_0120250829144057000000000000000
+AGR_LSD                                           100ZCRGENERAL                                                  E

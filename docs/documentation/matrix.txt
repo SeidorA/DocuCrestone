@@ -1,0 +1,29 @@
+---
+title: Compatibility Matrix
+sidebar_position: 6
+hide_table_of_contents: true
+---
+import Tabla from "@site/src/components/matrix/tabla";
+
+
+The Crestone compatibility matrix presents all the data sources and destinations compatible with the platform.
+
+It allows for easy identification of which systems can connect to each other, the types of extraction and loading supported, and the specific characteristics of each integration.
+
+This information serves as a technical reference when planning data transfer flows, ensuring that the configured connections meet the requirements of the environment and the project.
+
+<Tabla tipe="source" />
+<br />
+<br />
+
+
+The destinations section details all the platforms and storage systems where Crestone can deliver or replicate data.
+
+It highlights the supported loading methods, compatible authentication types, and any specific limitations or recommendations for each destination.
+
+This section helps ensure that the chosen target environment can efficiently handle the extracted data and maintain consistency across the entire data pipeline.
+
+
+<br />
+<br />
+ <Tabla  />

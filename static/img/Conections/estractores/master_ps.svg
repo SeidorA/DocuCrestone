@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 487.32 542.26">
+  <defs>
+    <style>
+      .cls-1 {
+        font-family: Poppins-Regular, Poppins;
+        font-size: 26px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #07153a;
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke: #07153a;
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+      }
+
+      .cls-4 {
+        fill: #e1e8f0;
+      }
+
+      .cls-2 {
+        font-family: Poppins-Bold, Poppins;
+        font-size: 28.85px;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <g id="Capa_1-2" data-name="Capa 1">
+    <g>
+      <path class="cls-3" d="M43.63,72.63v49.58c0,6.52,5.28,11.8,11.8,11.8h42.52"/>
+      <rect class="cls-4" width="487.32" height="72.62" rx="5.59" ry="5.59"/>
+      <text class="cls-2" transform="translate(64.64 47.88)"><tspan x="0" y="0">Project System</tspan></text>
+      <rect class="cls-4" x="97.85" y="101.4" width="361.32" height="72.62" rx="5.59" ry="5.59"/>
+      <text class="cls-1" transform="translate(132.74 147.27)"><tspan x="0" y="0">Project Attributes</tspan></text>
+      <path class="cls-3" d="M43.63,92.27v122.01c0,6.52,5.28,11.8,11.8,11.8h42.52"/>
+      <rect class="cls-4" x="97.85" y="193.46" width="361.32" height="72.62" rx="5.59" ry="5.59"/>
+      <text class="cls-1" transform="translate(132.74 239.33)"><tspan x="0" y="0">WBS Element Attributes</tspan></text>
+      <path class="cls-3" d="M43.63,184.33v122.01c0,6.52,5.28,11.8,11.8,11.8h42.52"/>
+      <rect class="cls-4" x="97.85" y="285.52" width="361.32" height="72.62" rx="5.59" ry="5.59"/>
+      <text class="cls-1" transform="translate(132.74 331.39)"><tspan x="0" y="0">WBS Element Texts</tspan></text>
+      <path class="cls-3" d="M43.63,276.39v122.01c0,6.52,5.28,11.8,11.8,11.8h42.52"/>
+      <rect class="cls-4" x="97.85" y="377.58" width="361.32" height="72.62" rx="5.59" ry="5.59"/>
+      <text class="cls-1" transform="translate(132.74 423.45)"><tspan x="0" y="0">Network Attributes</tspan></text>
+      <path class="cls-3" d="M43.63,368.45v122.01c0,6.52,5.28,11.8,11.8,11.8h42.52"/>
+      <rect class="cls-4" x="97.85" y="469.64" width="361.32" height="72.62" rx="5.59" ry="5.59"/>
+      <text class="cls-1" transform="translate(132.74 515.51)"><tspan x="0" y="0">Activity Attributes</tspan></text>
+      <text class="cls-1" transform="translate(294.28 48.79)"><tspan x="0" y="0">Master Data</tspan></text>
+    </g>
+  </g>
+</svg>
