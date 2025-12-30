@@ -72,7 +72,7 @@ jobs:
           file: ./dockerfile
           push: true
           tags: |
-            cloudseidoranalytics/docudaiana:${{ github.sha }}
+            cloudseidoranalytics/docucrestone:${{ github.sha }}
 
   update-docker-compose:
     if: github.actor != 'github-actions[bot]'
@@ -99,7 +99,7 @@ jobs:
           SHA=${{ github.sha }}
           
           # Actualizar el tag en docker-compose.yml
-          sed -i "s|cloudseidoranalytics/docudaiana.*|cloudseidoranalytics/docudaiana:${SHA}|g" docker-compose.yml
+          sed -i "s|cloudseidoranalytics/docucrestone.*|cloudseidoranalytics/docucrestone:${SHA}|g" docker-compose.yml
           
           # Mostrar el cambio
           echo "Contenido actualizado de docker-compose.yml:"
