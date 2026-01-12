@@ -97,11 +97,11 @@ After installation completes, test the system by opening the following URLs in y
 ## Common Commands
 - Bring CRESTONE stack up:
   ```bash
-  sudo docker compose -p crestone -f /home/ubuntu/crestone_installer/docker-compose-full.yml --env-file /home/ubuntu/crestone_installer/.env.runtime up -d --pull=never
+  sudo docker compose -p crestone -f /crestone/docker-compose-full.yml --env-file /crestone/.env.runtime up -d --pull=never
   ```
 - Bring CRESTONE stack down manually:
   ```bash
-  sudo docker compose -p crestone -f /home/ubuntu/crestone_installer/docker-compose-full.yml --env-file /home/ubuntu/crestone_installer/.env.runtime down
+  sudo docker compose -p crestone -f /crestone/docker-compose-full.yml --env-file /crestone/.env.runtime down
   ``` 
 - View logs:
   ```bash
