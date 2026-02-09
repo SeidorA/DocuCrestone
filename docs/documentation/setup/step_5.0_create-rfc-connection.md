@@ -41,7 +41,23 @@ No logon credentials are required for TCP/IP destinations. Save the destination 
 
 Click **Save** when the fields are complete.
 
-![alt text](/img/setup/5.2.0.0.image.png)
+![alt text](/img/setup/5.2.0.0.image.png) 
+
+
+These Gateway options are essential for RFC connection with SAP. Although they are located at the bottom of the screen and require scrolling, they must be completed for the integration to function correctly.
+
+![Techical Settings](/img/setup/technical.png) 
+
+- **Gateway Host**:
+Here you must specify the IP address or hostname of the SAP server acting as the Gateway host.
+This information is critical, as it defines which SAP system the RFC service will connect to.
+
+
+- **TCP Service**:
+This value corresponds to the standard SAP Gateway service, in the format:
+sapgw + SAP instance number
+
+(for example: sapgw00, sapgw01, etc.).
 
 ---
 
