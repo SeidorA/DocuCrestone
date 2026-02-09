@@ -59,6 +59,12 @@ sapgw + SAP instance number
 
 (for example: sapgw00, sapgw01, etc.).
 
+**Classical serialization is recommended**, as it ensures the orderly and stable processing of asynchronously transmitted data.
+
+![serialization](/img/setup/serialization.png)
+
+Regarding the handling of outgoing bgRFCs, the option to convert outgoing bgRFCs to outgoing qRFCs should be selected. This maintains execution order, improves queue monitoring, and facilitates error analysis during the testing and validation phase.
+
 ---
 
 ## 3) Test the connection
