@@ -69,3 +69,11 @@
 }
 
 html { scroll-behavior: smooth; }
+
+.videomd{
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 6px;
+  margin: 12px 0;
+}
