@@ -59,10 +59,14 @@ You will be prompted to enter the credentials needed to connect to your SAP ODat
 1. Enter the API Key associated with your SAP account.
 
 **Service URL**
-1. Obtain the OData service endpoint URL from your SAP system administrator.
-2. This URL typically points to the specific OData service you want to connect to, and it may look like:
-`https://<sap-server>/sap/opu/OData/<service-name>`
-1. Ensure the URL includes the correct protocol (https:// or http://), server address, and service name.
+1. Obtain the base URL of the OData service from your SAP system administrator.
+
+2. This URL can usually be seen as follows: `https://<sap-server/sap/byd/odata/cust/v1/.`
+
+The URL **should not include the OData service name**, as the service will be configured on the node later within the application.
+
+3. Make sure the URL includes the correct protocol `(https:// or http://)`, the server address, and the service name.
+
   </TabItem>
 </Tabs>
 
@@ -86,4 +90,4 @@ Finally, click the "Create Source" button to establish the connection to SAP ODa
 | Username       | SAP user (only if using Basic Auth)                    | `sapuser`                                             |
 | Password       | Password of the SAP user (only if using Basic Auth)    | — (hidden)                                            |
 | API Key        | Access key (only if using API Key authentication)      | `12345-abcde-67890`                                   |
-| Service URL    | Endpoint of the OData service                          | `https://sap.company.com/sap/opu/odata/ServiceName`   |
+| Service URL    | OData service endpoint                                 | `https://mysap123/sap/byd/odata/cust/v1/salesorder`   |
