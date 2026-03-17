@@ -60,11 +60,8 @@ You will be prompted to enter the credentials needed to connect to your SAP ODat
 
 **Service URL**
 1. Obtain the base URL of the OData service from your SAP system administrator.
-
 2. This URL can usually be seen as follows: `https://<sap-server/sap/byd/odata/cust/v1/.`
-
-The URL **should not include the OData service name**, as the service will be configured on the node later within the application.
-
+The URL should not include the OData service name, as the service will be configured on the node later within the application.
 3. Make sure the URL includes the correct protocol `(https:// or http://)`, the server address, and the service name.
 
   </TabItem>
