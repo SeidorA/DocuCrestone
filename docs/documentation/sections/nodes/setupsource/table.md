@@ -11,20 +11,27 @@ Once you have added a node it is time to configure it. The configuration options
 In this section, we will focus on how to configure a node when SAP is selected as the source.
 
 ### 1. Select Table
-Click on "Select Table Name" and choose a table.
-![chrome_5dwo9n85no](/img/old/node/chrome_5dwo9n85no.png)
+Select the “table” type, enter the table name, and click “Search” to find related results.
+![Select Table](/img/node/table/new/a.png)
 
-### 2. Select the Fields 
-Select the Map Fields you want for the node.
-![chrome_j1zwi4mjmj](/img/old/node/chrome_j1zwi4mjmj.png)
+
+### 2. Select the specific table
+
+![Select the specific table](/img/node/table/new/b.png)
 
 :::::tip
 If you need to configure the nodes in more detail, we recommend you read the [SQL Editor](../sqleditor/VariablesinNodes) page.
 :::::
 
-### 3. Done 
+### 3. Select the Fields 
+Select the specific table.
+
+![Select the Fields](/img/node/table/new/c.png)
+
+
+### 4. Done 
 Click the "Next" button.
-![chrome_08tjqsc4nn](/img/old/node/chrome_08tjqsc4nn.png)
+![Done](/img/node/table/new/d.png)
 
 
 
