@@ -1,4 +1,22 @@
 {
+  "1897":{
+    "version":"1.89.70",
+    "link":"1897",
+    "date":"10/11/2025",
+    "description":"This update focuses on enhancing the user experience and expanding our integration capabilities. With improved error handling, more intuitive UI elements, and additional connectors for popular data sources, Crestone continues to evolve as a comprehensive solution for managing complex data pipelines with ease and efficiency.",
+    "news":[
+      {
+        "title_slide":"OData & Attachments Improvements",
+        "description":"This update enhances the OData extraction experience by adding support for attachments with selectable target storage, improving URL configuration readability, and optimizing connection validation. It also includes pagination stability improvements and internal adjustments that ensure more consistent execution and better overall performance during OData extraction flows.",
+        "icon":"OData"
+      },
+      {
+        "title_slide":"General Improvements",
+        "description":"Several internal optimizations were implemented to improve the reliability and consistency of the extraction process. These enhancements focus on better integration between connection setup, execution flow, and destination handling, providing a more stable and efficient user experience.",
+        "icon":"Crestone"
+      }
+    ]
+  },
   "1896": {
     "version": "1.89.60",
     "link": "1896",
