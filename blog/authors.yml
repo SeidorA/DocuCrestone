@@ -1,25 +1,10 @@
-yangshun:
-  name: Yangshun Tay
-  title: Ex-Meta Staff Engineer, Co-founder GreatFrontEnd
-  url: https://linkedin.com/in/yangshun
-  image_url: https://github.com/yangshun.png
+Martin:
+  name: Martin Lopez
+  title: Products Director | Products
+  url: https://linkedin.com/in/mardlopez/
+  image_url: https://media.licdn.com/dms/image/v2/D4D03AQHhO5xxkg2QnQ/profile-displayphoto-scale_400_400/B4DZg1AposHAAg-/0/1753236020420?e=1781136000&v=beta&t=xFR7Dz0e2-UXYfXvPZbjMyF8s22L_2AbO9dTV5D5hs4
   page: true
   socials:
-    x: yangshunz
-    linkedin: yangshun
-    github: yangshun
-    newsletter: https://www.greatfrontend.com
+    linkedin: https://www.linkedin.com/in/mardlopez/
 
-slorber:
-  name: Sébastien Lorber
-  title: Docusaurus maintainer
-  url: https://sebastienlorber.com
-  image_url: https://github.com/slorber.png
-  page:
-    # customize the url of the author page at /blog/authors/<permalink>
-    permalink: '/all-sebastien-lorber-articles'
-  socials:
-    x: sebastienlorber
-    linkedin: sebastienlorber
-    github: slorber
-    newsletter: https://thisweekinreact.com
+

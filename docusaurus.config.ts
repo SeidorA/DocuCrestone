@@ -103,6 +103,11 @@ const config: Config = {
           sidebarId: 'releceSidebar',
           position: 'left',
           label: 'Release Notes',
+        },
+        {
+          to: '/blog',
+          label: 'Blog',
+          position: 'left',
         }
       ],
     },
