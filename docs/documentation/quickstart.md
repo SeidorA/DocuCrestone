@@ -92,7 +92,7 @@ Enter the required data to be able to connect correctly with your destination.
 5. Click **Create**.
 
 :::::info
-Note: Refer to the [Snowflake documentation](./sections/conections/detinations/snowflafe) for advanced configuration details.
+Note: Refer to the [Snowflake documentation](./sections/conections/detinations/snowflake) for advanced configuration details.
 :::::
 
 

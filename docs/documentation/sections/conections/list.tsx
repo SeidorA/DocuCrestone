@@ -55,7 +55,7 @@ const DestinationList: FeatureItem[] = [
   }, {
     title: "Snowflake",
     icon: "Snowflake",
-    link: '/docs/documentation/sections/conections/detinations/snowflafe',
+    link: '/docs/documentation/sections/conections/detinations/snowflake',
     brand: true,
     description: (
       <>
