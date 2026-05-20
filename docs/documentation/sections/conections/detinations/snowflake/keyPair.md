@@ -1,6 +1,7 @@
 ---
 iconName: "key"
 title: "Key-pair"
+slug: key-pair-snowflake
 description: "Create a node to export data from a source and load it into a destination."
 ---
 import Admonition from '@theme/Admonition';
