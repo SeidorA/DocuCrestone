@@ -1,4 +1,27 @@
 {
+  "1920":{
+    "version":"1.92.00",
+    "link":"192", 
+    "date":"20/10/2026",
+    "description":"This update focuses on enhancing the user experience and expanding our integration capabilities. With improved error handling, more intuitive UI elements, and additional connectors for popular data sources, Crestone continues to evolve as a comprehensive solution for managing complex data pipelines with ease and efficiency.",
+    "news":[
+      {
+        "title_slide":"SQL Server & Azure SQL Server Data Sources",
+        "description":"Crestone now supports SQL Server and Azure SQL Server as data sources, allowing users to extract tables and views with support for both full and incremental loads when available. This release also introduces a guided visual configuration experience, enabling users to browse databases, schemas, tables, and columns directly from the interface, with improved loading indicators for a smoother setup process.",
+        "icon":"MSSQL"
+      },
+      {
+        "title_slide":"SAP HANA as Destination",
+        "description":"Crestone now supports SAP HANA as a destination for extracted data, with support for both full and incremental loads when available. This update introduces a clearer and more flexible configuration experience, allowing users to manage schemas and tables directly from the interface, including creating new schemas or tables, selecting existing ones, and preserving saved configurations when editing destinations.",
+        "icon":"Crestone"
+      },
+      {
+        "title_slide":"Usability & Configuration Improvements",
+        "description":"This release introduces multiple usability and configuration enhancements across Crestone. New features include SQL Script Mode for custom query creation, preview support for SQL Server and Azure SQL Server sources, improved table search for ABAP and SAP S/4HANA, a clearer BAPI configuration experience, and cleaner pagination for large node lists. Together, these updates provide a more flexible, stable, and user-friendly experience during data extraction and node configuration workflows.",
+        "icon":"network"
+      }
+    ]
+  },
   "1897":{
     "version":"1.89.70",
     "link":"1897",
