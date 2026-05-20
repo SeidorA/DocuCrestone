@@ -1,6 +1,6 @@
 ---
 slug: sap-note-3255746-data-integration-es
-title: SAP-Compliant Data Extraction with CRESTONE - SAP Note 3255746 (EN)
+title: SAP-Compliant Data Extraction with CRESTONE - SAP Note 3255746 (ES)
 description: What Every Data Integration Team Needs to Know
 authors: [Martin]
 tags: [SAP]
