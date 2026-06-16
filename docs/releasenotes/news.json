@@ -1,42 +1,68 @@
 {
-  "1920":{
-    "version":"1.92.00",
-    "link":"192", 
-    "date":"20/10/2026",
-    "description":"This update focuses on enhancing the user experience and expanding our integration capabilities. With improved error handling, more intuitive UI elements, and additional connectors for popular data sources, Crestone continues to evolve as a comprehensive solution for managing complex data pipelines with ease and efficiency.",
-    "news":[
+  "1940": {
+    "version": "1.94.00",
+    "link": "194",
+    "date": "24/09/2026",
+    "description": "This update focuses on enhancing the user experience and expanding our integration capabilities. With improved error handling, more intuitive UI elements, and additional connectors for popular data sources, Crestone continues to evolve as a comprehensive solution for managing complex data pipelines with ease and efficiency.",
+    "news": [
       {
-        "title_slide":"SQL Server & Azure SQL Server Data Sources",
-        "description":"Crestone now supports SQL Server and Azure SQL Server as data sources, allowing users to extract tables and views with support for both full and incremental loads when available. This release also introduces a guided visual configuration experience, enabling users to browse databases, schemas, tables, and columns directly from the interface, with improved loading indicators for a smoother setup process.",
-        "icon":"MSSQL"
-      },
-      {
-        "title_slide":"SAP HANA as Destination",
-        "description":"Crestone now supports SAP HANA as a destination for extracted data, with support for both full and incremental loads when available. This update introduces a clearer and more flexible configuration experience, allowing users to manage schemas and tables directly from the interface, including creating new schemas or tables, selecting existing ones, and preserving saved configurations when editing destinations.",
-        "icon":"Crestone"
-      },
-      {
-        "title_slide":"Usability & Configuration Improvements",
-        "description":"This release introduces multiple usability and configuration enhancements across Crestone. New features include SQL Script Mode for custom query creation, preview support for SQL Server and Azure SQL Server sources, improved table search for ABAP and SAP S/4HANA, a clearer BAPI configuration experience, and cleaner pagination for large node lists. Together, these updates provide a more flexible, stable, and user-friendly experience during data extraction and node configuration workflows.",
-        "icon":"network"
+        "title_slide": "SAP HANA Object Explorer",
+        "description": "Crestone enhances the SAP HANA source configuration experience with schema-aware object discovery and an improved search workflow. Users can now browse and select schemas before searching, and discover Tables, Views, and Calculation Views directly from the interface. This release also introduces object type badges, smarter search validation, automatic cleanup of dependent selections when schemas change, and improved loading states for a more intuitive and reliable configuration process.",
+        "icon": "SAPHANA"
       }
     ]
   },
-  "1897":{
-    "version":"1.89.70",
-    "link":"1897",
-    "date":"10/11/2025",
-    "description":"This update focuses on enhancing the user experience and expanding our integration capabilities. With improved error handling, more intuitive UI elements, and additional connectors for popular data sources, Crestone continues to evolve as a comprehensive solution for managing complex data pipelines with ease and efficiency.",
-    "news":[
+  "1930": {
+    "version": "1.93.00",
+    "link": "193",
+    "date": "23/06/2026",
+    "description": "This update focuses on enhancing the user experience and expanding our integration capabilities. With improved error handling, more intuitive UI elements, and additional connectors for popular data sources, Crestone continues to evolve as a comprehensive solution for managing complex data pipelines with ease and efficiency.",
+    "news": [
       {
-        "title_slide":"OData & Attachments Improvements",
-        "description":"This update enhances the OData extraction experience by adding support for attachments with selectable target storage, improving URL configuration readability, and optimizing connection validation. It also includes pagination stability improvements and internal adjustments that ensure more consistent execution and better overall performance during OData extraction flows.",
-        "icon":"OData"
+        "title_slide": "Microsoft Azure SSO",
+        "description": "Crestone now supports Single Sign-On (SSO) with Microsoft and Azure Active Directory accounts, allowing users to authenticate using their organization's existing credentials. Users can sign in directly from the login screen through Microsoft's authentication portal, reducing password management while leveraging corporate security policies. This release also includes improvements to authentication, session management, environment configuration, deployment portability, and startup behavior.",
+        "icon": "Microsoft"
+      }
+    ]
+  },
+  "1920": {
+    "version": "1.92.00",
+    "link": "192",
+    "date": "20/10/2026",
+    "description": "This update focuses on enhancing the user experience and expanding our integration capabilities. With improved error handling, more intuitive UI elements, and additional connectors for popular data sources, Crestone continues to evolve as a comprehensive solution for managing complex data pipelines with ease and efficiency.",
+    "news": [
+      {
+        "title_slide": "SQL Server & Azure SQL Server Data Sources",
+        "description": "Crestone now supports SQL Server and Azure SQL Server as data sources, allowing users to extract tables and views with support for both full and incremental loads when available. This release also introduces a guided visual configuration experience, enabling users to browse databases, schemas, tables, and columns directly from the interface, with improved loading indicators for a smoother setup process.",
+        "icon": "MSSQL"
       },
       {
-        "title_slide":"General Improvements",
-        "description":"Several internal optimizations were implemented to improve the reliability and consistency of the extraction process. These enhancements focus on better integration between connection setup, execution flow, and destination handling, providing a more stable and efficient user experience.",
-        "icon":"Crestone"
+        "title_slide": "SAP HANA as Destination",
+        "description": "Crestone now supports SAP HANA as a destination for extracted data, with support for both full and incremental loads when available. This update introduces a clearer and more flexible configuration experience, allowing users to manage schemas and tables directly from the interface, including creating new schemas or tables, selecting existing ones, and preserving saved configurations when editing destinations.",
+        "icon": "Crestone"
+      },
+      {
+        "title_slide": "Usability & Configuration Improvements",
+        "description": "This release introduces multiple usability and configuration enhancements across Crestone. New features include SQL Script Mode for custom query creation, preview support for SQL Server and Azure SQL Server sources, improved table search for ABAP and SAP S/4HANA, a clearer BAPI configuration experience, and cleaner pagination for large node lists. Together, these updates provide a more flexible, stable, and user-friendly experience during data extraction and node configuration workflows.",
+        "icon": "network"
+      }
+    ]
+  },
+  "1897": {
+    "version": "1.89.70",
+    "link": "1897",
+    "date": "10/11/2025",
+    "description": "This update focuses on enhancing the user experience and expanding our integration capabilities. With improved error handling, more intuitive UI elements, and additional connectors for popular data sources, Crestone continues to evolve as a comprehensive solution for managing complex data pipelines with ease and efficiency.",
+    "news": [
+      {
+        "title_slide": "OData & Attachments Improvements",
+        "description": "This update enhances the OData extraction experience by adding support for attachments with selectable target storage, improving URL configuration readability, and optimizing connection validation. It also includes pagination stability improvements and internal adjustments that ensure more consistent execution and better overall performance during OData extraction flows.",
+        "icon": "OData"
+      },
+      {
+        "title_slide": "General Improvements",
+        "description": "Several internal optimizations were implemented to improve the reliability and consistency of the extraction process. These enhancements focus on better integration between connection setup, execution flow, and destination handling, providing a more stable and efficient user experience.",
+        "icon": "Crestone"
       }
     ]
   },

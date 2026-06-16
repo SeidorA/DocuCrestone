@@ -1,0 +1,21 @@
+---
+title: "V 1.94.00"
+---
+import items from './news.json';
+import Listarelease from './slider/list'
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import {Slidersimple} from './slider/Sliderprimarry'
+
+<Tabs>
+  <TabItem value="Action" label="Action" default>
+    <Listarelease news={items[1940].news} version="1940" />
+  </TabItem>
+  <TabItem value="Slider" label="Slider">
+    <Slidersimple version={1940} items={items[1940].news} />
+  </TabItem>
+</Tabs>
+
+
+
+
