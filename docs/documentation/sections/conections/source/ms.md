@@ -1,6 +1,8 @@
 ---
 title: MS SQL Server
-description : " MS SQL Server Connection"
+description : "MS SQL Server Connection"
+iconName: "MSSQL"
+useBrand: true
 sidebar_position : 9
 ---
 

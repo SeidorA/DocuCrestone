@@ -1,6 +1,8 @@
 ---
 title : " Azure SQL"
 description : " Azure SQL Connection"
+iconName: "AzureSql"
+useBrand: true
 sidebar_position : 8
 ---
 

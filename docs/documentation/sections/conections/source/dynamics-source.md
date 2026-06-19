@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-iconName: "Windows"
+iconName: "Dynamics"
 useBrand: true
 title: "Microsoft Dynamics 365 Source Connection"
 description: "Create a node to extract data from a source and load it into a destination."
