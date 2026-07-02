@@ -2,6 +2,7 @@
 iconName: "file"
 title: " Windows file server "
 description: "Create a node to export data as files into a storage layer such as AWS, Snowflake, Azure, Databricks, and Google Storage."
+sidebar_position: 17
 ---
 ## How to create a destination with Windows file server
 

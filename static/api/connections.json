@@ -60,23 +60,23 @@
       "id": "azuresql",
       "title": " Azure SQL",
       "description": " Azure SQL Connection",
-      "iconName": null,
-      "useBrand": false,
+      "iconName": "AzureSql",
+      "useBrand": true,
       "link": "/docs/documentation/sections/conections/source/azuresql"
     },
     {
       "id": "ms",
       "title": "MS SQL Server",
-      "description": " MS SQL Server Connection",
-      "iconName": null,
-      "useBrand": false,
+      "description": "MS SQL Server Connection",
+      "iconName": "MSSQL",
+      "useBrand": true,
       "link": "/docs/documentation/sections/conections/source/ms"
     },
     {
       "id": "dynamics-source",
       "title": "Microsoft Dynamics 365 Source Connection",
       "description": "Create a node to extract data from a source and load it into a destination.",
-      "iconName": "Windows",
+      "iconName": "Dynamics",
       "useBrand": true,
       "link": "/docs/documentation/sections/conections/source/dynamics-source"
     },
@@ -103,6 +103,46 @@
       "iconName": "PostgreSQL",
       "useBrand": true,
       "link": "/docs/documentation/sections/conections/source/postgresql-source"
+    },
+    {
+      "id": "aws-s3-source",
+      "title": "AWS S3 Source Connection",
+      "description": "AWS S3 Source Connection",
+      "iconName": "AWS",
+      "useBrand": true,
+      "link": "/docs/documentation/sections/conections/source/aws-s3-source"
+    },
+    {
+      "id": "azure-storage-source",
+      "title": "Azure Storage Source Connection",
+      "description": "Azure Storage Source Connection",
+      "iconName": "Azure",
+      "useBrand": true,
+      "link": "/docs/documentation/sections/conections/source/azure-storage-source"
+    },
+    {
+      "id": "gcp-storage-source",
+      "title": "GCP Cloud Storage Source Connection",
+      "description": "",
+      "iconName": "GoogleStorage",
+      "useBrand": true,
+      "link": "/docs/documentation/sections/conections/source/gcp-storage-source"
+    },
+    {
+      "id": "sybase-source",
+      "title": "Sybase Source Connection",
+      "description": "",
+      "iconName": "Sybase",
+      "useBrand": true,
+      "link": "/docs/documentation/sections/conections/source/sybase-source"
+    },
+    {
+      "id": "db2-source",
+      "title": "IBM DB2 Source Connection",
+      "description": "",
+      "iconName": "IBMDb2",
+      "useBrand": true,
+      "link": "/docs/documentation/sections/conections/source/db2-source"
     }
   ],
   "destinations": [
@@ -111,7 +151,7 @@
       "title": "Amazon S3",
       "description": "Create a destination to connect to AWS.",
       "iconName": "S3",
-      "useBrand": false,
+      "useBrand": true,
       "link": "/docs/documentation/sections/conections/detinations/aws"
     },
     {
@@ -211,14 +251,6 @@
       "link": "/docs/documentation/sections/conections/detinations/oracle-destination"
     },
     {
-      "id": "fileserver",
-      "title": " Windows file server ",
-      "description": "Create a node to export data as files into a storage layer such as AWS, Snowflake, Azure, Databricks, and Google Storage.",
-      "iconName": "file",
-      "useBrand": false,
-      "link": "/docs/documentation/sections/conections/detinations/fileserver"
-    },
-    {
       "id": "mysql-destination",
       "title": "MySQL Destination Connection",
       "description": "Create a connection to a MySQL database.",
@@ -233,6 +265,30 @@
       "iconName": "SAP",
       "useBrand": true,
       "link": "/docs/documentation/sections/conections/detinations/hana"
+    },
+    {
+      "id": "fileserver",
+      "title": " Windows file server ",
+      "description": "Create a node to export data as files into a storage layer such as AWS, Snowflake, Azure, Databricks, and Google Storage.",
+      "iconName": "file",
+      "useBrand": false,
+      "link": "/docs/documentation/sections/conections/detinations/fileserver"
+    },
+    {
+      "id": "db2-destination",
+      "title": "IBM DB2 Destination Connection",
+      "description": "",
+      "iconName": "IBMDb2",
+      "useBrand": true,
+      "link": "/docs/documentation/sections/conections/detinations/db2-destination"
+    },
+    {
+      "id": "sybase-destination",
+      "title": "SAP ASE (Sybase) Destination Connection",
+      "description": "",
+      "iconName": "Sybase",
+      "useBrand": true,
+      "link": "/docs/documentation/sections/conections/detinations/sybase-destination"
     }
   ]
 }

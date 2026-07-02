@@ -3,6 +3,7 @@ title: SAP HANA
 iconName: SAP
 useBrand: true
 description: "Create a destination to load data into a SAP HANA database."
+sidebar_position: 16
 ---
 
 ## How to create a destination with SAP HANA

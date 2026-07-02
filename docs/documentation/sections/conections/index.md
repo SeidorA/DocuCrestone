@@ -10,7 +10,9 @@ import {Titleicon} from '../../cards/cards.tsx'
 
 ## Available Connection Types in Crestone
 
-
+:::tip Connections Diagram Generator
+You can view and customize the full live connections diagram, select custom backgrounds, and download it as a high-resolution PNG for your presentations and slides at the [Connections Diagram Generator](/connections-diagram).
+:::
 
 Crestone supports a flexible and scalable connection model that allows seamless integration between SAP systems and modern data platforms.
 

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 iconName: "S3"
+useBrand: true
 title: "Amazon S3"
 description: "Create a destination to connect to AWS."
 ---

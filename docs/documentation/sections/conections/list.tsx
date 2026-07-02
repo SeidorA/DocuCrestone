@@ -2,131 +2,23 @@
 import { CaralIcon } from 'iconcaral2';
 import { FeatureItem, Feature, Titleicon, Cardcre } from '../../cards/cards';
 
-const FeatureList: FeatureItem[] = [
-  {
-    title: 'SAP ABAP',
-    icon: 'SAP',
-    brand: true,
-    description: (
-      <>
-        Direct integration with classic SAP ECC or S/4HANA systems using custom or standard function modules (RFC/BAPI) for structured data extraction. Ideal for high-performance access to core SAP tables and reports.
+import connectionsData from '../../../../../../../../../../seidor/portal/Portal/src/components/CrestoneConnections/connections.json';
 
-      </>
-    ),
-    link: '/docs/documentation/sections/conections/source/sapabap',
-  },
+const FeatureList: FeatureItem[] = connectionsData.origins.map((item) => ({
+  title: item.title,
+  icon: item.iconName,
+  brand: item.useBrand,
+  description: item.description,
+  link: item.link,
+}));
 
-  {
-    title: 'SAP 4Hanna',
-    icon: 'SAP',
-    brand: true,
-    description: (
-      <>
-        <b>  (Core Data Services – CDS) </b>
-        Enables access to advanced data models built with CDS views. Offers semantic-rich, optimized queries for modern S/4HANA deployments.
-      </>
-    ),
-    link: '/docs/documentation/sections/conections/source/sap4hanna',
-  }, {
-    title: 'SAP OData',
-    icon: 'SapOdata',
-    description: (
-      <>
-        Connects via OData services to expose business data through RESTful APIs. Suitable for scenarios that require loosely coupled, service-oriented access to SAP entities.
-      </>
-    ),
-    link: '/docs/documentation/sections/conections/source/sapodata',
-  },
-
-];
-
-const DestinationList: FeatureItem[] = [
-  {
-    title: "AWS S3",
-    icon: "AWS",
-    brand: true,
-    link: '/docs/documentation/sections/conections/detinations/aws',
-    description: (
-      <>
-        Object storage destination for raw or transformed SAP data. Useful for data lake architectures and integration with AWS analytics tools.
-
-      </>
-    ),
-  }, {
-    title: "Snowflake",
-    icon: "Snowflake",
-    link: '/docs/documentation/sections/conections/detinations/snowflake',
-    brand: true,
-    description: (
-      <>
-        Cloud-native data warehouse optimized for performance and concurrency. Ideal for advanced analytics, reporting, and machine learning workloads.
-
-      </>
-    ),
-  }, {
-    title: 'Azure',
-    icon: 'Azure',
-    brand: true,
-    link: '/docs/documentation/sections/conections/detinations/Azure',
-    description: (
-      <>
-        Scalable storage for big data workloads. Facilitates integration with Azure Synapse, Databricks, and other Microsoft services.
-
-      </>
-    ),
-  }, {
-    title: 'Azure SQL',
-    icon: 'AzureSql',
-    link: '/docs/documentation/sections/conections/detinations/AzureSQL',
-    brand: true,
-    description: (
-      <>
-        Managed relational database service on Azure. Recommended for structured data ingestion and operational reporting.
-      </>
-    )
-  }, {
-    title: 'Teradata',
-    icon: 'Teradata',
-    link: '/docs/documentation/sections/conections/detinations/teradata',
-    brand: true,
-    description: (
-      <>
-        Enterprise-grade analytical platform. Suitable for organizations with existing Teradata ecosystems and large-scale processing requirements.
-
-      </>
-    ),
-  }, {
-    title: 'Databricks',
-    icon: 'Databricks',
-    link: '/docs/documentation/sections/conections/detinations/databricks',
-    brand: true,
-    description: (
-      <>
-        Unified data analytics platform based on Apache Spark. Enables direct export of SAP data into Delta Lake for real-time analytics and machine learning.
-
-      </>
-    ),
-  }, {
-    title: 'Google Cloud Platform',
-    icon: 'GoogleStorage',
-    link: '/docs/documentation/sections/conections/detinations/gcp',
-    brand: true,
-    description: (
-      <>
-        Google Cloud Platform is a suite of cloud computing services offered by Google that provides a series of modular cloud services including computing, data storage, data analytics, and machine learning.
-      </>
-    ),
-  }, {
-    title: 'Windows file server',
-    icon: 'file',
-    link: '/docs/documentation/sections/conections/detinations/fileserver',
-    description: (
-      <>
-        Centralized storage solution that allows users on a network to access and share files.
-      </>
-    ),
-  }
-]
+const DestinationList: FeatureItem[] = connectionsData.destinations.map((item) => ({
+  title: item.title,
+  icon: item.iconName,
+  brand: item.useBrand,
+  description: item.description,
+  link: item.link,
+}));
 
 
 export function SourceList() {

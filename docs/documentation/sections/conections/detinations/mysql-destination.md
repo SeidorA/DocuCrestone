@@ -4,6 +4,7 @@ useBrand: true
 title: "MySQL Destination Connection"
 description: "Create a connection to a MySQL database."
 sidebar_label: "MySQL"
+sidebar_position: 15
 ---
 
 # MySQL Destination Connection

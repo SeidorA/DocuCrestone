@@ -4,6 +4,7 @@ useBrand: true
 title: "PostgreSQL Source Connection"
 description: "Create a connection to a PostgreSQL database."
 sidebar_label: "PostgreSQL"
+sidebar_position: 12
 ---
 
 # PostgreSQL Source Connection
