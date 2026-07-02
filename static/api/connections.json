@@ -110,7 +110,7 @@
       "description": "AWS S3 Source Connection",
       "iconName": "AWS",
       "useBrand": true,
-      "link": "/docs/documentation/sections/conections/source/aws-s3-source"
+      "link": "/docs/documentation/sections/conections/source/aws-s3"
     },
     {
       "id": "azure-storage-source",
@@ -118,7 +118,7 @@
       "description": "Azure Storage Source Connection",
       "iconName": "Azure",
       "useBrand": true,
-      "link": "/docs/documentation/sections/conections/source/azure-storage-source"
+      "link": "/docs/documentation/sections/conections/source/azure-storage"
     },
     {
       "id": "gcp-storage-source",
@@ -126,7 +126,7 @@
       "description": "",
       "iconName": "GoogleStorage",
       "useBrand": true,
-      "link": "/docs/documentation/sections/conections/source/gcp-storage-source"
+      "link": "/docs/documentation/sections/conections/source/gcp-storage"
     },
     {
       "id": "sybase-source",
@@ -134,7 +134,7 @@
       "description": "",
       "iconName": "Sybase",
       "useBrand": true,
-      "link": "/docs/documentation/sections/conections/source/sybase-source"
+      "link": "/docs/documentation/sections/conections/source/sybase"
     },
     {
       "id": "db2-source",
@@ -142,7 +142,7 @@
       "description": "",
       "iconName": "IBMDb2",
       "useBrand": true,
-      "link": "/docs/documentation/sections/conections/source/db2-source"
+      "link": "/docs/documentation/sections/conections/source/db2"
     }
   ],
   "destinations": [
@@ -280,7 +280,7 @@
       "description": "",
       "iconName": "IBMDb2",
       "useBrand": true,
-      "link": "/docs/documentation/sections/conections/detinations/db2-destination"
+      "link": "/docs/documentation/sections/conections/detinations/db2"
     },
     {
       "id": "sybase-destination",
@@ -288,7 +288,7 @@
       "description": "",
       "iconName": "Sybase",
       "useBrand": true,
-      "link": "/docs/documentation/sections/conections/detinations/sybase-destination"
+      "link": "/docs/documentation/sections/conections/detinations/sybase"
     }
   ]
 }

@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import Layout from '@theme/Layout';
 import { Brand, CaralIcon } from 'iconcaral2';
-import connectionsData from '../../../../../../../../seidor/portal/Portal/src/components/CrestoneConnections/connections.json';
+import connectionsData from '../../static/api/connections.json';
 
 // SVG Crestone Logo with customizable colors
 function CrestoneLogo({ color1 = "#66B6FF", color2 = "#ffffff", size = 48 }) {

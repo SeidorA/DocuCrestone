@@ -2,7 +2,7 @@
 import { CaralIcon } from 'iconcaral2';
 import { FeatureItem, Feature, Titleicon, Cardcre } from '../../cards/cards';
 
-import connectionsData from '../../../../../../../../../../seidor/portal/Portal/src/components/CrestoneConnections/connections.json';
+import connectionsData from '../../../../static/api/connections.json';
 
 const FeatureList: FeatureItem[] = connectionsData.origins.map((item) => ({
   title: item.title,

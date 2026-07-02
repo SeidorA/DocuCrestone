@@ -67,6 +67,17 @@ function parseFrontMatter(filePath) {
   // Remove file extension (.md)
   urlPath = urlPath.replace(/\.md$/, '');
   
+  // Respect Docusaurus custom slug frontmatter if present
+  if (metadata.slug) {
+    if (metadata.slug.startsWith('/')) {
+      urlPath = metadata.slug.slice(1);
+    } else {
+      const parts = urlPath.split('/');
+      parts[parts.length - 1] = metadata.slug;
+      urlPath = parts.join('/');
+    }
+  }
+  
   // If it ends with /index, remove it to get cleaner URL
   if (urlPath.endsWith('/index')) {
     urlPath = urlPath.slice(0, -6);
