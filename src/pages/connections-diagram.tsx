@@ -653,7 +653,7 @@ export default function ConnectionsDiagram() {
               <span style={{ display: 'block', fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', color: 'var(--ifm-color-gray-medium-dark)' }}>
                 {lang === 'es' ? 'Mostrar/Ocultar Conexiones' : 'Show/Hide Connections'}
               </span>
-              
+
               {/* Origins Checklist */}
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
@@ -786,681 +786,681 @@ export default function ConnectionsDiagram() {
               justifyContent: 'center'
             }}>
               {/* Capture Canvas */}
-          <div
-            id="diagram-canvas"
-            ref={canvasRef}
-            style={{
-              width: `${canvasWidth}px`,
-              height: `${canvasHeight}px`,
-              position: 'relative',
-              borderRadius: '8px',
-              overflow: 'hidden',
-              flexShrink: 0,
-              boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
-              ...getContainerStyle()
-            }}
-          >
-            {/* Grid Pattern Background Layer */}
-            {gridType !== 'none' && (
-              <div style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                backgroundImage: gridType === 'dots'
-                  ? `radial-gradient(${gridColor} 1.5px, transparent 1.5px)`
-                  : `linear-gradient(to right, ${gridColor} 1px, transparent 1px), linear-gradient(to bottom, ${gridColor} 1px, transparent 1px)`,
-                backgroundSize: '24px 24px',
-                opacity: gridType === 'dots' ? 0.25 : 0.15,
-                pointerEvents: 'none',
-                zIndex: 0
-              }} />
-            )}
-
-            {/* SVG Path Layer */}
-            {pathType !== 'hidden' && (
-              <svg style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                pointerEvents: 'none',
-                zIndex: 1
-              }}>
-                <defs>
-                  <linearGradient id="originGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#66B6FF" stopOpacity={0.4} />
-                    <stop offset="100%" stopColor="#07153A" stopOpacity={0.8} />
-                  </linearGradient>
-                  <linearGradient id="destGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#07153A" stopOpacity={0.8} />
-                    <stop offset="100%" stopColor="#66B6FF" stopOpacity={0.4} />
-                  </linearGradient>
-                </defs>
-
-                {/* Draw curves or orthogonal lines from Origins to Hub */}
-                {activeOrigins.map((_, i) => {
-                  const cardY = origStartTop + i * 62 + 25;
-
-                  let d = '';
-                  if (pathType === 'curved') {
-                    d = `M 320 ${cardY} C 410 ${cardY}, 440 ${hubY}, 525 ${hubY}`;
-                  } else {
-                    const R = 10;
-                    const X_start = 320;
-                    const X_end = 525;
-                    const X_trunk = 410;
-                    if (cardY === hubY) {
-                      d = `M ${X_start} ${cardY} H ${X_end}`;
-                    } else if (cardY < hubY) {
-                      d = `M ${X_start} ${cardY} H ${X_trunk - R} Q ${X_trunk} ${cardY} ${X_trunk} ${cardY + R} V ${hubY - R} Q ${X_trunk} ${hubY} ${X_trunk + R} ${hubY} H ${X_end}`;
-                    } else {
-                      d = `M ${X_start} ${cardY} H ${X_trunk - R} Q ${X_trunk} ${cardY} ${X_trunk} ${cardY - R} V ${hubY + R} Q ${X_trunk} ${hubY} ${X_trunk + R} ${hubY} H ${X_end}`;
-                    }
-                  }
-
-                  return (
-                    <g key={`orig-path-${i}`}>
-                      <path
-                        d={d}
-                        fill="none"
-                        stroke={getLineStroke(false)}
-                        strokeWidth="2.5"
-                        strokeDasharray={bgTheme === 'gradient' ? 'none' : undefined}
-                      />
-                      <circle cx="320" cy={cardY} r="5" fill={getLineStroke(false)} />
-                    </g>
-                  );
-                })}
-
-                {/* Draw curves or orthogonal lines from Hub to Destinations */}
-                {activeDestinations.map((_, j) => {
-                  const cardY = destStartTop + j * 62 + 25;
-
-                  let d = '';
-                  if (pathType === 'curved') {
-                    d = `M 675 ${hubY} C 760 ${hubY}, 790 ${cardY}, 880 ${cardY}`;
-                  } else {
-                    const R = 10;
-                    const X_start = 675;
-                    const X_end = 880;
-                    const X_trunk = 790;
-                    if (cardY === hubY) {
-                      d = `M ${X_start} ${cardY} H ${X_end}`;
-                    } else if (hubY > cardY) {
-                      d = `M ${X_start} ${hubY} H ${X_trunk - R} Q ${X_trunk} ${hubY} ${X_trunk} ${hubY - R} V ${cardY + R} Q ${X_trunk} ${cardY} ${X_trunk + R} ${cardY} H ${X_end}`;
-                    } else {
-                      d = `M ${X_start} ${hubY} H ${X_trunk - R} Q ${X_trunk} ${hubY} ${X_trunk} ${hubY + R} V ${cardY - R} Q ${X_trunk} ${cardY} ${X_trunk + R} ${cardY} H ${X_end}`;
-                    }
-                  }
-
-                  return (
-                    <g key={`dest-path-${j}`}>
-                      <path
-                        d={d}
-                        fill="none"
-                        stroke={getLineStroke(true)}
-                        strokeWidth="2.5"
-                        strokeDasharray={bgTheme === 'gradient' ? 'none' : undefined}
-                      />
-                      <circle cx="880" cy={cardY} r="5" fill={getLineStroke(true)} />
-                    </g>
-                  );
-                })}
-
-                {/* Central Hub Connector Pins */}
-                <circle cx="525" cy={hubY} r="5" fill={getLineStroke(false)} />
-                <circle cx="675" cy={hubY} r="5" fill={getLineStroke(true)} />
-              </svg>
-            )}
-
-            {/* Canvas Header (Optional) */}
-            {(showMainTitle || showMainSubtitle) && (
-              <div style={{
-                position: 'absolute',
-                top: '30px',
-                left: 0,
-                width: '100%',
-                textAlign: 'center',
-                zIndex: 3
-              }}>
-                {showMainTitle && (
-                  <h2 style={{
-                    margin: 0,
-                    fontFamily: "'Poppins', 'Outfit', sans-serif",
-                    fontSize: '24px',
-                    fontWeight: 700,
-                    letterSpacing: '1px',
-                    color: bgTheme === 'light' || (bgTheme === 'transparent' && cardTheme === 'light') ? '#0f172a' : '#ffffff'
-                  }}>
-                    {customMainTitle || t.mainTitle}
-                  </h2>
+              <div
+                id="diagram-canvas"
+                ref={canvasRef}
+                style={{
+                  width: `${canvasWidth}px`,
+                  height: `${canvasHeight}px`,
+                  position: 'relative',
+                  borderRadius: '8px',
+                  overflow: 'hidden',
+                  flexShrink: 0,
+                  boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)',
+                  ...getContainerStyle()
+                }}
+              >
+                {/* Grid Pattern Background Layer */}
+                {gridType !== 'none' && (
+                  <div style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundImage: gridType === 'dots'
+                      ? `radial-gradient(${gridColor} 1.5px, transparent 1.5px)`
+                      : `linear-gradient(to right, ${gridColor} 1px, transparent 1px), linear-gradient(to bottom, ${gridColor} 1px, transparent 1px)`,
+                    backgroundSize: '24px 24px',
+                    opacity: gridType === 'dots' ? 0.25 : 0.15,
+                    pointerEvents: 'none',
+                    zIndex: 0
+                  }} />
                 )}
-                {showMainSubtitle && (
-                  <p style={{
-                    margin: '4px 0 0 0',
-                    fontSize: '12px',
-                    opacity: 0.7,
-                    color: bgTheme === 'light' || (bgTheme === 'transparent' && cardTheme === 'light') ? '#475569' : '#cbd5e1'
-                  }}>
-                    {customMainSubtitle || t.mainSubtitle}
-                  </p>
-                )}
-              </div>
-            )}
 
-            {/* Column 1: Origins */}
-            <div style={{
-              position: 'absolute',
-              left: '60px',
-              top: '0',
-              width: `${columnWidth}px`,
-              height: '100%',
-              zIndex: 2
-            }}>
-              {showColumnTitles && (
+                {/* SVG Path Layer */}
+                {pathType !== 'hidden' && (
+                  <svg style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    pointerEvents: 'none',
+                    zIndex: 1
+                  }}>
+                    <defs>
+                      <linearGradient id="originGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#66B6FF" stopOpacity={0.4} />
+                        <stop offset="100%" stopColor="#07153A" stopOpacity={0.8} />
+                      </linearGradient>
+                      <linearGradient id="destGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#07153A" stopOpacity={0.8} />
+                        <stop offset="100%" stopColor="#66B6FF" stopOpacity={0.4} />
+                      </linearGradient>
+                    </defs>
+
+                    {/* Draw curves or orthogonal lines from Origins to Hub */}
+                    {activeOrigins.map((_, i) => {
+                      const cardY = origStartTop + i * 62 + 25;
+
+                      let d = '';
+                      if (pathType === 'curved') {
+                        d = `M 320 ${cardY} C 410 ${cardY}, 440 ${hubY}, 525 ${hubY}`;
+                      } else {
+                        const R = 10;
+                        const X_start = 320;
+                        const X_end = 525;
+                        const X_trunk = 410;
+                        if (cardY === hubY) {
+                          d = `M ${X_start} ${cardY} H ${X_end}`;
+                        } else if (cardY < hubY) {
+                          d = `M ${X_start} ${cardY} H ${X_trunk - R} Q ${X_trunk} ${cardY} ${X_trunk} ${cardY + R} V ${hubY - R} Q ${X_trunk} ${hubY} ${X_trunk + R} ${hubY} H ${X_end}`;
+                        } else {
+                          d = `M ${X_start} ${cardY} H ${X_trunk - R} Q ${X_trunk} ${cardY} ${X_trunk} ${cardY - R} V ${hubY + R} Q ${X_trunk} ${hubY} ${X_trunk + R} ${hubY} H ${X_end}`;
+                        }
+                      }
+
+                      return (
+                        <g key={`orig-path-${i}`}>
+                          <path
+                            d={d}
+                            fill="none"
+                            stroke={getLineStroke(false)}
+                            strokeWidth="2.5"
+                            strokeDasharray={bgTheme === 'gradient' ? 'none' : undefined}
+                          />
+                          <circle cx="320" cy={cardY} r="5" fill={getLineStroke(false)} />
+                        </g>
+                      );
+                    })}
+
+                    {/* Draw curves or orthogonal lines from Hub to Destinations */}
+                    {activeDestinations.map((_, j) => {
+                      const cardY = destStartTop + j * 62 + 25;
+
+                      let d = '';
+                      if (pathType === 'curved') {
+                        d = `M 675 ${hubY} C 760 ${hubY}, 790 ${cardY}, 880 ${cardY}`;
+                      } else {
+                        const R = 10;
+                        const X_start = 675;
+                        const X_end = 880;
+                        const X_trunk = 790;
+                        if (cardY === hubY) {
+                          d = `M ${X_start} ${cardY} H ${X_end}`;
+                        } else if (hubY > cardY) {
+                          d = `M ${X_start} ${hubY} H ${X_trunk - R} Q ${X_trunk} ${hubY} ${X_trunk} ${hubY - R} V ${cardY + R} Q ${X_trunk} ${cardY} ${X_trunk + R} ${cardY} H ${X_end}`;
+                        } else {
+                          d = `M ${X_start} ${hubY} H ${X_trunk - R} Q ${X_trunk} ${hubY} ${X_trunk} ${hubY + R} V ${cardY - R} Q ${X_trunk} ${cardY} ${X_trunk + R} ${cardY} H ${X_end}`;
+                        }
+                      }
+
+                      return (
+                        <g key={`dest-path-${j}`}>
+                          <path
+                            d={d}
+                            fill="none"
+                            stroke={getLineStroke(true)}
+                            strokeWidth="2.5"
+                            strokeDasharray={bgTheme === 'gradient' ? 'none' : undefined}
+                          />
+                          <circle cx="880" cy={cardY} r="5" fill={getLineStroke(true)} />
+                        </g>
+                      );
+                    })}
+
+                    {/* Central Hub Connector Pins */}
+                    <circle cx="525" cy={hubY} r="5" fill={getLineStroke(false)} />
+                    <circle cx="675" cy={hubY} r="5" fill={getLineStroke(true)} />
+                  </svg>
+                )}
+
+                {/* Canvas Header (Optional) */}
+                {(showMainTitle || showMainSubtitle) && (
+                  <div style={{
+                    position: 'absolute',
+                    top: '30px',
+                    left: 0,
+                    width: '100%',
+                    textAlign: 'center',
+                    zIndex: 3
+                  }}>
+                    {showMainTitle && (
+                      <h2 style={{
+                        margin: 0,
+                        fontFamily: "'Poppins', 'Outfit', sans-serif",
+                        fontSize: '24px',
+                        fontWeight: 700,
+                        letterSpacing: '1px',
+                        color: bgTheme === 'light' || (bgTheme === 'transparent' && cardTheme === 'light') ? '#0f172a' : '#ffffff'
+                      }}>
+                        {customMainTitle || t.mainTitle}
+                      </h2>
+                    )}
+                    {showMainSubtitle && (
+                      <p style={{
+                        margin: '4px 0 0 0',
+                        fontSize: '12px',
+                        opacity: 0.7,
+                        color: bgTheme === 'light' || (bgTheme === 'transparent' && cardTheme === 'light') ? '#475569' : '#cbd5e1'
+                      }}>
+                        {customMainSubtitle || t.mainSubtitle}
+                      </p>
+                    )}
+                  </div>
+                )}
+
+                {/* Column 1: Origins */}
                 <div style={{
                   position: 'absolute',
-                  top: `${origStartTop - 40}px`,
-                  left: 0,
-                  width: '100%',
-                  textAlign: 'left',
-                  borderBottom: bgTheme === 'light' ? '1px solid #e2e8f0' : '1px solid rgba(255,255,255,0.1)',
-                  paddingBottom: '6px'
+                  left: '60px',
+                  top: '0',
+                  width: `${columnWidth}px`,
+                  height: '100%',
+                  zIndex: 2
                 }}>
-                  <span style={{
-                    fontSize: '12px',
-                    fontWeight: 700,
-                    letterSpacing: '2px',
-                    color: bgTheme === 'light' || (bgTheme === 'transparent' && cardTheme === 'light') ? '#475569' : '#a5b4fc',
-                    textTransform: 'uppercase'
+                  {showColumnTitles && (
+                    <div style={{
+                      position: 'absolute',
+                      top: `${origStartTop - 40}px`,
+                      left: 0,
+                      width: '100%',
+                      textAlign: 'left',
+                      borderBottom: bgTheme === 'light' ? '1px solid #e2e8f0' : '1px solid rgba(255,255,255,0.1)',
+                      paddingBottom: '6px'
+                    }}>
+                      <span style={{
+                        fontSize: '12px',
+                        fontWeight: 700,
+                        letterSpacing: '2px',
+                        color: bgTheme === 'light' || (bgTheme === 'transparent' && cardTheme === 'light') ? '#475569' : '#a5b4fc',
+                        textTransform: 'uppercase'
+                      }}>
+                        {t.origins} ({activeOrigins.length})
+                      </span>
+                    </div>
+                  )}
+
+                  <div style={{
+                    position: 'absolute',
+                    top: `${origStartTop}px`,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '12px'
                   }}>
-                    {t.origins} ({activeOrigins.length})
-                  </span>
+                    {activeOrigins.map((item) => (
+                      <ConnectionCard
+                        key={item.id}
+                        title={item.title}
+                        icon={item.iconName}
+                        brand={item.useBrand}
+                        theme={cardTheme}
+                      />
+                    ))}
+                  </div>
                 </div>
-              )}
 
-              <div style={{
-                position: 'absolute',
-                top: `${origStartTop}px`,
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '12px'
-              }}>
-                {activeOrigins.map((item) => (
-                  <ConnectionCard
-                    key={item.id}
-                    title={item.title}
-                    icon={item.iconName}
-                    brand={item.useBrand}
-                    theme={cardTheme}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* Column 2: Central Hub */}
-            <div style={{
-              position: 'absolute',
-              left: '420px',
-              top: '0',
-              width: '360px',
-              height: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 2
-            }}>
-              {/* Outer Dashed Ring */}
-              <div style={{
-                width: '180px',
-                height: '180px',
-                borderRadius: '50%',
-                border: bgTheme === 'light' ? '3px dashed #cbd5e1' : '3px dashed rgba(99, 102, 241, 0.3)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                position: 'relative',
-                marginTop: '60px'
-              }}>
-                {/* Inner Glow Circle */}
+                {/* Column 2: Central Hub */}
                 <div style={{
-                  width: '136px',
-                  height: '136px',
-                  borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #07153a 0%, #1e1b4b 100%)',
-                  boxShadow: '0 0 35px rgba(99, 102, 241, 0.45)',
-                  border: '2px solid rgba(99, 102, 241, 0.6)',
+                  position: 'absolute',
+                  left: '420px',
+                  top: '0',
+                  width: '360px',
+                  height: '100%',
                   display: 'flex',
+                  flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  zIndex: 2
                 }}>
-                  <CrestoneLogo size={54} color1="#66B6FF" color2="#ffffff" />
-                </div>
-              </div>
+                  {/* Outer Dashed Ring */}
+                  <div style={{
+                    width: '180px',
+                    height: '180px',
+                    borderRadius: '50%',
+                    border: bgTheme === 'light' ? '3px dashed #cbd5e1' : '3px dashed rgba(99, 102, 241, 0.3)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    position: 'relative',
+                    marginTop: '60px'
+                  }}>
+                    {/* Inner Glow Circle */}
+                    <div style={{
+                      width: '136px',
+                      height: '136px',
+                      borderRadius: '50%',
+                      background: 'linear-gradient(135deg, #07153a 0%, #1e1b4b 100%)',
+                      boxShadow: '0 0 35px rgba(99, 102, 241, 0.45)',
+                      border: '2px solid rgba(99, 102, 241, 0.6)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                      <CrestoneLogo size={54} color1="#66B6FF" color2="#ffffff" />
+                    </div>
+                  </div>
 
-              {/* Floating Label Board */}
-              <div style={{
-                marginTop: '20px',
-                backgroundColor: cardTheme === 'dark' ? '#1e293b' : '#ffffff',
-                border: cardTheme === 'dark' ? '2px solid #334155' : '2px solid #e2e8f0',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-                borderRadius: '12px',
-                padding: '8px 20px',
-                textAlign: 'center',
-                width: '220px'
-              }}>
-                <div style={{
-                  fontFamily: "'Poppins', 'Outfit', sans-serif",
-                  fontWeight: 800,
-                  fontSize: '14px',
-                  letterSpacing: '2.5px',
-                  color: cardTheme === 'dark' ? '#ffffff' : '#07153a',
-                  marginBottom: '2px'
-                }}>
-                  CRESTONE
-                </div>
-                <div style={{
-                  fontSize: '9px',
-                  fontWeight: 600,
-                  textTransform: 'uppercase',
-                  letterSpacing: '1px',
-                  color: '#94a3b8'
-                }}>
+                  {/* Floating Label Board */}
+                  <div style={{
+                    marginTop: '20px',
+                    backgroundColor: cardTheme === 'dark' ? '#1e293b' : '#ffffff',
+                    border: cardTheme === 'dark' ? '2px solid #334155' : '2px solid #e2e8f0',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                    borderRadius: '12px',
+                    padding: '8px 20px',
+                    textAlign: 'center',
+                    width: '220px'
+                  }}>
+                    <div style={{
+                      fontFamily: "'Poppins', 'Outfit', sans-serif",
+                      fontWeight: 800,
+                      fontSize: '14px',
+                      letterSpacing: '2.5px',
+                      color: cardTheme === 'dark' ? '#ffffff' : '#07153a',
+                      marginBottom: '2px'
+                    }}>
+                      CRESTONE
+                    </div>
+                    <div style={{
+                      fontSize: '9px',
+                      fontWeight: 600,
+                      textTransform: 'uppercase',
+                      letterSpacing: '1px',
+                      color: '#94a3b8'
+                    }}>
 
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
 
-            {/* Column 3: Destinations */}
-            <div style={{
-              position: 'absolute',
-              left: '880px',
-              top: '0',
-              width: `${columnWidth}px`,
-              height: '100%',
-              zIndex: 2
-            }}>
-              {showColumnTitles && (
+                {/* Column 3: Destinations */}
                 <div style={{
                   position: 'absolute',
-                  top: `${destStartTop - 40}px`,
-                  left: 0,
-                  width: '100%',
-                  textAlign: 'left',
-                  borderBottom: bgTheme === 'light' ? '1px solid #e2e8f0' : '1px solid rgba(255,255,255,0.1)',
-                  paddingBottom: '6px'
+                  left: '880px',
+                  top: '0',
+                  width: `${columnWidth}px`,
+                  height: '100%',
+                  zIndex: 2
                 }}>
-                  <span style={{
-                    fontSize: '12px',
-                    fontWeight: 700,
-                    letterSpacing: '2px',
-                    color: bgTheme === 'light' || (bgTheme === 'transparent' && cardTheme === 'light') ? '#475569' : '#a5b4fc',
-                    textTransform: 'uppercase'
-                  }}>
-                    {t.destinations} ({activeDestinations.length})
-                  </span>
-                </div>
-              )}
+                  {showColumnTitles && (
+                    <div style={{
+                      position: 'absolute',
+                      top: `${destStartTop - 40}px`,
+                      left: 0,
+                      width: '100%',
+                      textAlign: 'left',
+                      borderBottom: bgTheme === 'light' ? '1px solid #e2e8f0' : '1px solid rgba(255,255,255,0.1)',
+                      paddingBottom: '6px'
+                    }}>
+                      <span style={{
+                        fontSize: '12px',
+                        fontWeight: 700,
+                        letterSpacing: '2px',
+                        color: bgTheme === 'light' || (bgTheme === 'transparent' && cardTheme === 'light') ? '#475569' : '#a5b4fc',
+                        textTransform: 'uppercase'
+                      }}>
+                        {t.destinations} ({activeDestinations.length})
+                      </span>
+                    </div>
+                  )}
 
-              <div style={{
-                position: 'absolute',
-                top: `${destStartTop}px`,
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '12px'
-              }}>
-                {activeDestinations.map((item) => (
-                  <ConnectionCard
-                    key={item.id}
-                    title={item.title}
-                    icon={item.iconName}
-                    brand={item.useBrand}
-                    theme={cardTheme}
-                  />
-                ))}
+                  <div style={{
+                    position: 'absolute',
+                    top: `${destStartTop}px`,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '12px'
+                  }}>
+                    {activeDestinations.map((item) => (
+                      <ConnectionCard
+                        key={item.id}
+                        title={item.title}
+                        icon={item.iconName}
+                        brand={item.useBrand}
+                        theme={cardTheme}
+                      />
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-        {/* Download Diagram Button under the Canvas */}
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '24px' }}>
-          <button
-            onClick={downloadPng}
-            disabled={isDownloading}
-            style={{
-              backgroundColor: '#3b82f6',
-              color: '#ffffff',
-              border: 'none',
-              borderRadius: '8px',
-              padding: '12px 28px',
-              fontSize: '15px',
-              fontWeight: 700,
-              cursor: isDownloading ? 'not-allowed' : 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              transition: 'all 0.2s ease',
-              boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)',
-            }}
-            onMouseEnter={(e) => {
-              if (!isDownloading) {
-                e.currentTarget.style.backgroundColor = '#2563eb';
-                e.currentTarget.style.transform = 'translateY(-1px)';
-                e.currentTarget.style.boxShadow = '0 6px 16px rgba(59, 130, 246, 0.4)';
-              }
-            }}
-            onMouseLeave={(e) => {
-              if (!isDownloading) {
-                e.currentTarget.style.backgroundColor = '#3b82f6';
-                e.currentTarget.style.transform = 'none';
-                e.currentTarget.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.3)';
-              }
-            }}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-            {isDownloading ? t.downloading : t.downloadDiagram}
-          </button>
-        </div>
-
-        {/* Individual Assets Export Section */}
-        <hr style={{ margin: '48px 0', border: 'none', borderTop: '1px solid var(--ifm-toc-border-color)', opacity: 0.6 }} />
-
-        <div style={{ marginBottom: '32px' }}>
-          <h2 style={{ fontWeight: 800, fontSize: '28px', marginBottom: '8px', color: 'var(--ifm-color-content)' }}>
-            {t.individualAssetsTitle}
-          </h2>
-          <p style={{ color: 'var(--ifm-color-gray-medium-dark)', fontSize: '15px', maxWidth: '800px' }}>
-            {t.individualAssetsSubtitle}
-          </p>
-        </div>
-
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
-          {/* Origins Section */}
-          <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
-              <h3 style={{ margin: 0, fontWeight: 700, fontSize: '20px', color: '#3b82f6' }}>
-                {t.origins} ({activeOrigins.length})
-              </h3>
+            {/* Download Diagram Button under the Canvas */}
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '24px' }}>
               <button
-                onClick={() => downloadAllCards(activeOrigins, 'origins')}
-                disabled={downloadingCategory !== null}
+                onClick={downloadPng}
+                disabled={isDownloading}
                 style={{
-                  background: 'transparent',
-                  border: '1px solid #3b82f6',
-                  color: '#3b82f6',
-                  borderRadius: '6px',
-                  padding: '6px 14px',
-                  fontSize: '13px',
-                  fontWeight: 600,
-                  cursor: downloadingCategory !== null ? 'not-allowed' : 'pointer',
+                  backgroundColor: '#3b82f6',
+                  color: '#ffffff',
+                  border: 'none',
+                  borderRadius: '8px',
+                  padding: '12px 28px',
+                  fontSize: '15px',
+                  fontWeight: 700,
+                  cursor: isDownloading ? 'not-allowed' : 'pointer',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '6px',
-                  transition: 'all 0.15s ease',
+                  gap: '8px',
+                  transition: 'all 0.2s ease',
+                  boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)',
                 }}
                 onMouseEnter={(e) => {
-                  if (downloadingCategory === null) {
-                    e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.08)';
+                  if (!isDownloading) {
+                    e.currentTarget.style.backgroundColor = '#2563eb';
+                    e.currentTarget.style.transform = 'translateY(-1px)';
+                    e.currentTarget.style.boxShadow = '0 6px 16px rgba(59, 130, 246, 0.4)';
                   }
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'transparent';
+                  if (!isDownloading) {
+                    e.currentTarget.style.backgroundColor = '#3b82f6';
+                    e.currentTarget.style.transform = 'none';
+                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.3)';
+                  }
                 }}
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                   <polyline points="7 10 12 15 17 10" />
                   <line x1="12" y1="15" x2="12" y2="3" />
                 </svg>
-                {downloadingCategory === 'origins' ? t.downloading : t.downloadAllOrigins}
+                {isDownloading ? t.downloading : t.downloadDiagram}
               </button>
             </div>
 
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(310px, 1fr))',
-              gap: '24px',
-            }}>
-              {activeOrigins.map((item) => (
-                <div
-                  key={item.id}
-                  style={{
-                    border: '1px solid var(--ifm-toc-border-color)',
-                    borderRadius: '12px',
-                    backgroundColor: 'var(--ifm-card-background-color)',
-                    padding: '16px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '16px',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
-                    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                    e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.06)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'none';
-                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.03)';
-                  }}
-                >
-                  {/* Card Export Wrapper */}
-                  <div
-                    id={`card-export-${item.id}`}
-                    style={{
-                      padding: '24px',
-                      borderRadius: '8px',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      boxSizing: 'border-box',
-                      ...getContainerStyle(),
-                    }}
-                  >
-                    <ConnectionCard
-                      title={item.title}
-                      icon={item.iconName}
-                      brand={item.useBrand}
-                      theme={cardTheme}
-                    />
-                  </div>
+            {/* Individual Assets Export Section */}
+            <hr style={{ margin: '48px 0', border: 'none', borderTop: '1px solid var(--ifm-toc-border-color)', opacity: 0.6 }} />
 
-                  {/* Download Action */}
+            <div style={{ marginBottom: '32px' }}>
+              <h2 style={{ fontWeight: 800, fontSize: '28px', marginBottom: '8px', color: 'var(--ifm-color-content)' }}>
+                {t.individualAssetsTitle}
+              </h2>
+              <p style={{ color: 'var(--ifm-color-gray-medium-dark)', fontSize: '15px', maxWidth: '800px' }}>
+                {t.individualAssetsSubtitle}
+              </p>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '48px' }}>
+              {/* Origins Section */}
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
+                  <h3 style={{ margin: 0, fontWeight: 700, fontSize: '20px', color: '#3b82f6' }}>
+                    {t.origins} ({activeOrigins.length})
+                  </h3>
                   <button
-                    onClick={() => downloadSingleCard(item.id, item.title)}
-                    disabled={downloadingCardId !== null}
+                    onClick={() => downloadAllCards(activeOrigins, 'origins')}
+                    disabled={downloadingCategory !== null}
                     style={{
-                      backgroundColor: 'var(--ifm-background-color)',
-                      border: '1px solid var(--ifm-toc-border-color)',
-                      color: 'var(--ifm-color-content)',
+                      background: 'transparent',
+                      border: '1px solid #3b82f6',
+                      color: '#3b82f6',
                       borderRadius: '6px',
-                      padding: '6px 12px',
-                      fontSize: '12px',
+                      padding: '6px 14px',
+                      fontSize: '13px',
                       fontWeight: 600,
-                      cursor: downloadingCardId !== null ? 'not-allowed' : 'pointer',
+                      cursor: downloadingCategory !== null ? 'not-allowed' : 'pointer',
                       display: 'flex',
                       alignItems: 'center',
                       gap: '6px',
-                      width: '100%',
-                      justifyContent: 'center',
                       transition: 'all 0.15s ease',
                     }}
                     onMouseEnter={(e) => {
-                      if (downloadingCardId === null) {
-                        e.currentTarget.style.borderColor = '#3b82f6';
-                        e.currentTarget.style.color = '#3b82f6';
+                      if (downloadingCategory === null) {
+                        e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.08)';
                       }
                     }}
                     onMouseLeave={(e) => {
-                      if (downloadingCardId === null) {
-                        e.currentTarget.style.borderColor = 'var(--ifm-toc-border-color)';
-                        e.currentTarget.style.color = 'var(--ifm-color-content)';
-                      }
+                      e.currentTarget.style.backgroundColor = 'transparent';
                     }}
                   >
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                       <polyline points="7 10 12 15 17 10" />
                       <line x1="12" y1="15" x2="12" y2="3" />
                     </svg>
-                    {downloadingCardId === item.id ? t.exporting : t.exportCard}
+                    {downloadingCategory === 'origins' ? t.downloading : t.downloadAllOrigins}
                   </button>
                 </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Destinations Section */}
-          <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
-              <h3 style={{ margin: 0, fontWeight: 700, fontSize: '20px', color: '#6366f1' }}>
-                {t.destinations} ({activeDestinations.length})
-              </h3>
-              <button
-                onClick={() => downloadAllCards(activeDestinations, 'destinations')}
-                disabled={downloadingCategory !== null}
-                style={{
-                  background: 'transparent',
-                  border: '1px solid #6366f1',
-                  color: '#6366f1',
-                  borderRadius: '6px',
-                  padding: '6px 14px',
-                  fontSize: '13px',
-                  fontWeight: 600,
-                  cursor: downloadingCategory !== null ? 'not-allowed' : 'pointer',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '6px',
-                  transition: 'all 0.15s ease',
-                }}
-                onMouseEnter={(e) => {
-                  if (downloadingCategory === null) {
-                    e.currentTarget.style.backgroundColor = 'rgba(99, 102, 241, 0.08)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.backgroundColor = 'transparent';
-                }}
-              >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
-                {downloadingCategory === 'destinations' ? t.downloading : t.downloadAllDestinations}
-              </button>
-            </div>
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(310px, 1fr))',
+                  gap: '24px',
+                }}>
+                  {activeOrigins.map((item) => (
+                    <div
+                      key={item.id}
+                      style={{
+                        border: '1px solid var(--ifm-toc-border-color)',
+                        borderRadius: '12px',
+                        backgroundColor: 'var(--ifm-card-background-color)',
+                        padding: '16px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '16px',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
+                        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                        e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.06)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'none';
+                        e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.03)';
+                      }}
+                    >
+                      {/* Card Export Wrapper */}
+                      <div
+                        id={`card-export-${item.id}`}
+                        style={{
+                          padding: '24px',
+                          borderRadius: '8px',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          boxSizing: 'border-box',
+                          ...getContainerStyle(),
+                        }}
+                      >
+                        <ConnectionCard
+                          title={item.title}
+                          icon={item.iconName}
+                          brand={item.useBrand}
+                          theme={cardTheme}
+                        />
+                      </div>
 
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(310px, 1fr))',
-              gap: '24px',
-            }}>
-              {activeDestinations.map((item) => (
-                <div
-                  key={item.id}
-                  style={{
-                    border: '1px solid var(--ifm-toc-border-color)',
-                    borderRadius: '12px',
-                    backgroundColor: 'var(--ifm-card-background-color)',
-                    padding: '16px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '16px',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
-                    transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
-                    e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.06)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'none';
-                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.03)';
-                  }}
-                >
-                  {/* Card Export Wrapper */}
-                  <div
-                    id={`card-export-${item.id}`}
-                    style={{
-                      padding: '24px',
-                      borderRadius: '8px',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      boxSizing: 'border-box',
-                      ...getContainerStyle(),
-                    }}
-                  >
-                    <ConnectionCard
-                      title={item.title}
-                      icon={item.iconName}
-                      brand={item.useBrand}
-                      theme={cardTheme}
-                    />
-                  </div>
+                      {/* Download Action */}
+                      <button
+                        onClick={() => downloadSingleCard(item.id, item.title)}
+                        disabled={downloadingCardId !== null}
+                        style={{
+                          backgroundColor: 'var(--ifm-background-color)',
+                          border: '1px solid var(--ifm-toc-border-color)',
+                          color: 'var(--ifm-color-content)',
+                          borderRadius: '6px',
+                          padding: '6px 12px',
+                          fontSize: '12px',
+                          fontWeight: 600,
+                          cursor: downloadingCardId !== null ? 'not-allowed' : 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          width: '100%',
+                          justifyContent: 'center',
+                          transition: 'all 0.15s ease',
+                        }}
+                        onMouseEnter={(e) => {
+                          if (downloadingCardId === null) {
+                            e.currentTarget.style.borderColor = '#3b82f6';
+                            e.currentTarget.style.color = '#3b82f6';
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          if (downloadingCardId === null) {
+                            e.currentTarget.style.borderColor = 'var(--ifm-toc-border-color)';
+                            e.currentTarget.style.color = 'var(--ifm-color-content)';
+                          }
+                        }}
+                      >
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                          <polyline points="7 10 12 15 17 10" />
+                          <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        {downloadingCardId === item.id ? t.exporting : t.exportCard}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-                  {/* Download Action */}
+              {/* Destinations Section */}
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
+                  <h3 style={{ margin: 0, fontWeight: 700, fontSize: '20px', color: '#6366f1' }}>
+                    {t.destinations} ({activeDestinations.length})
+                  </h3>
                   <button
-                    onClick={() => downloadSingleCard(item.id, item.title)}
-                    disabled={downloadingCardId !== null}
+                    onClick={() => downloadAllCards(activeDestinations, 'destinations')}
+                    disabled={downloadingCategory !== null}
                     style={{
-                      backgroundColor: 'var(--ifm-background-color)',
-                      border: '1px solid var(--ifm-toc-border-color)',
-                      color: 'var(--ifm-color-content)',
+                      background: 'transparent',
+                      border: '1px solid #6366f1',
+                      color: '#6366f1',
                       borderRadius: '6px',
-                      padding: '6px 12px',
-                      fontSize: '12px',
+                      padding: '6px 14px',
+                      fontSize: '13px',
                       fontWeight: 600,
-                      cursor: downloadingCardId !== null ? 'not-allowed' : 'pointer',
+                      cursor: downloadingCategory !== null ? 'not-allowed' : 'pointer',
                       display: 'flex',
                       alignItems: 'center',
                       gap: '6px',
-                      width: '100%',
-                      justifyContent: 'center',
                       transition: 'all 0.15s ease',
                     }}
                     onMouseEnter={(e) => {
-                      if (downloadingCardId === null) {
-                        e.currentTarget.style.borderColor = '#6366f1';
-                        e.currentTarget.style.color = '#6366f1';
+                      if (downloadingCategory === null) {
+                        e.currentTarget.style.backgroundColor = 'rgba(99, 102, 241, 0.08)';
                       }
                     }}
                     onMouseLeave={(e) => {
-                      if (downloadingCardId === null) {
-                        e.currentTarget.style.borderColor = 'var(--ifm-toc-border-color)';
-                        e.currentTarget.style.color = 'var(--ifm-color-content)';
-                      }
+                      e.currentTarget.style.backgroundColor = 'transparent';
                     }}
                   >
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                       <polyline points="7 10 12 15 17 10" />
                       <line x1="12" y1="15" x2="12" y2="3" />
                     </svg>
-                    {downloadingCardId === item.id ? t.exporting : t.exportCard}
+                    {downloadingCategory === 'destinations' ? t.downloading : t.downloadAllDestinations}
                   </button>
                 </div>
-              ))}
+
+                <div style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fill, minmax(310px, 1fr))',
+                  gap: '24px',
+                }}>
+                  {activeDestinations.map((item) => (
+                    <div
+                      key={item.id}
+                      style={{
+                        border: '1px solid var(--ifm-toc-border-color)',
+                        borderRadius: '12px',
+                        backgroundColor: 'var(--ifm-card-background-color)',
+                        padding: '16px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '16px',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.03)',
+                        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                        e.currentTarget.style.boxShadow = '0 6px 16px rgba(0,0,0,0.06)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'none';
+                        e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.03)';
+                      }}
+                    >
+                      {/* Card Export Wrapper */}
+                      <div
+                        id={`card-export-${item.id}`}
+                        style={{
+                          padding: '24px',
+                          borderRadius: '8px',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          boxSizing: 'border-box',
+                          ...getContainerStyle(),
+                        }}
+                      >
+                        <ConnectionCard
+                          title={item.title}
+                          icon={item.iconName}
+                          brand={item.useBrand}
+                          theme={cardTheme}
+                        />
+                      </div>
+
+                      {/* Download Action */}
+                      <button
+                        onClick={() => downloadSingleCard(item.id, item.title)}
+                        disabled={downloadingCardId !== null}
+                        style={{
+                          backgroundColor: 'var(--ifm-background-color)',
+                          border: '1px solid var(--ifm-toc-border-color)',
+                          color: 'var(--ifm-color-content)',
+                          borderRadius: '6px',
+                          padding: '6px 12px',
+                          fontSize: '12px',
+                          fontWeight: 600,
+                          cursor: downloadingCardId !== null ? 'not-allowed' : 'pointer',
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '6px',
+                          width: '100%',
+                          justifyContent: 'center',
+                          transition: 'all 0.15s ease',
+                        }}
+                        onMouseEnter={(e) => {
+                          if (downloadingCardId === null) {
+                            e.currentTarget.style.borderColor = '#6366f1';
+                            e.currentTarget.style.color = '#6366f1';
+                          }
+                        }}
+                        onMouseLeave={(e) => {
+                          if (downloadingCardId === null) {
+                            e.currentTarget.style.borderColor = 'var(--ifm-toc-border-color)';
+                            e.currentTarget.style.color = 'var(--ifm-color-content)';
+                          }
+                        }}
+                      >
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                          <polyline points="7 10 12 15 17 10" />
+                          <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        {downloadingCardId === item.id ? t.exporting : t.exportCard}
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</Layout>
+    </Layout>
   );
 }

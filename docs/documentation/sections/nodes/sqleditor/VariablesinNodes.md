@@ -23,25 +23,43 @@ You can create as many variables as you consider necessary for your queries.
 **Python code** : Allows the execution of dynamic code between {} braces, such as 
 ```{{today().replace(...)}}```, to schedule jobs and customize each execution.
 
+Examples of use — Python code:
+- First day of the current month:
+```{{ today().replace(day=1).strftime('%Y%m%d') }}```
+- Last day of the current month:
+```{{ ((today().replace(day=28) + timedelta(days=4)).replace(day=1) - timedelta(days=1)).strftime('%Y%m%d') }}```
+
+:::::warning
+In Python code, text strings must be enclosed in single quotes ('...'), not double quotes.
+:::::
+
+
 ![Types of Variables Python](/img/node/variables/c.png)
 
-**Within the “SQL Editor”**, you can use these variables to build dynamic SQL queries.
-Example: ```SELECT * FROM table WHERE date = @date.```
+
+
+**Within the SQL Editor**, you can use these variables to create dynamic SQL queries. Important: When referencing the variable in the WHERE clause, it must be enclosed in single quotes to avoid syntax errors. Example:
+
+```SELECT * FROM table WHERE date = ‘@date’ ```
+
 
 ## Implementation
+
 **Creation of Variables:**
 
 Define the required variables in the corresponding node.
 Assign fixed or dynamic values as needed.
+
 ![Implementation](/img/node/variables/image.png)
 
-## Configuration of SQL Queries:
-Use the variables defined within the “SQL Editor” to customize queries. Make sure that the variables are correctly referenced in the query. 
+
+## Configuration of SQL Queries
+Use the variables defined in the SQL Editor to customize your queries. Ensure that variables are correctly referenced within single quotes ('@variable') to avoid syntax errors.
 
 ## Execution of Jobs:
 Use the variables defined within the “SQL Editor” to customize queries.
 Make sure the variables are correctly referenced in the query.
 
 Schedule the execution of tasks using dynamic variables.
-Make sure that the jQuery code between braces {} is correctly implemented to obtain the desired values.
+Make sure that the Jinja2 code between braces {} is correctly implemented to obtain the desired values.
 

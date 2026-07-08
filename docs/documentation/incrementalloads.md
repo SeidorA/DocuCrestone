@@ -25,13 +25,17 @@ For example:
 
 | Variable | Expression | Meaning |
 |-----------|-------------|----------|
-| `@startdate` | `{{today().replace(day=1).strftime("%Y%m%d")}}` | First day of the current month |
-| `@enddate` | `{{(today().replace(day=1) - timedelta(days=1)).strftime("%Y%m%d")}}` | Last day of the previous month |
+| `@startdate` | ` {{ today().replace(day=1).strftime('%Y%m%d') }}` | First day of the current month |
+| `@enddate` | `{{ ((today().replace(day=28) + timedelta(days=4)).replace(day=1) - timedelta(days=1)).strftime('%Y%m%d') }}` | Last day of the previous month |
 
 **WHERE Example:**  
 ```sql
-VBAK-ERDAT >= @startdate
+VBAK-ERDAT >= ‘@startdate’
 ```
+
+:::warning
+Within the Python code for the variable, text strings must be enclosed in single quotes ('...'), not double quotes. Also, when using the variable in the SQL Editor, it is important to enclose '@variable' in single quotes within the WHERE clause to avoid syntax conflicts.
+:::
 
 CRESTONE will automatically resolve these variables at runtime during extraction.
 

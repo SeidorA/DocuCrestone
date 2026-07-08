@@ -4,6 +4,10 @@ This guide shows how to set up the TCP/IP RFC destination that Crestone will use
 
 > The RFC destination provides the secure transport channel for Crestone to execute remote-enabled function modules.
 
+:::::info
+**Note on handling extractions:** By default, Crestone uses a single RFC connection (CRESTONE_SERVER) to communicate with the SAP system, which means that extractions are executed sequentially—that is, an RFC connection can only process one extraction at a time. If your scenario requires running multiple extractions simultaneously, see the "Using Parallelism: Additional RFC Connections (Slots)" section below.
+::::: 
+
 ---
 
 ## Prerequisites
@@ -59,7 +63,15 @@ sapgw + SAP instance number
 
 (for example: sapgw00, sapgw01, etc.).
 
-**Classical serialization is recommended**, as it ensures the orderly and stable processing of asynchronously transmitted data.
+
+**Special Options**
+
+**Classical serialization ("classic") must be configured**, as it is the setting that ensures the orderly and stable processing of asynchronously transmitted data. If left configured as "fast" (or any option other than "classic"), the connection will fail and produce the following error:
+
+```text
+[JCO ERROR SYSTEM FAILURE: Index -1 out of bounds for length 0 RFC ERROR SYSTEM – Message number: 341]
+```
+
 
 ![serialization](/img/setup/serialization.png)
 
@@ -117,3 +129,29 @@ Regarding the handling of outgoing bgRFCs, the option to convert outgoing bgRFCs
 2. Set the destination name and Program ID to `CRESTONE_SERVER` (or your agreed identifier).
 3. Save and test the destination to confirm successful registration and connectivity.
 4. Configure SAP Gateway security
+5. Use of parallelism: additional RFC connections (slots)
+Each extraction performed by Crestone consumes one RFC connection. With only one connection configured **(CRESTONE_SERVER)**, extractions can only be processed sequentially, one at a time.
+If parallel processing is to be enabled, additional RFC connections must be created in SM59, following the same procedure detailed in steps **2) Maintain the RFC Destination**, **3) Test the Connection**, and **4) Configure SAP Gateway Security**, using EXACTLY the following destination names:
+- CRESTONE_SERVER_SLOT_01
+- CRESTONE_SERVER_SLOT_02
+- CRESTONE_SERVER_SLOT_03
+- CRESTONE_SERVER_SLOT_04
+- CRESTONE_SERVER_SLOT_05
+
+**Important:** 
+
+These are the only slot names supported by the platform; Crestone recognizes a maximum of 5 slots, predefined with these exact names. No variants are supported (different names, different numbering, or a quantity greater than 5); any RFC connection created with a different name will not be recognized by Crestone as a valid parallelism slot.
+When configuring each slot, every reference to **CRESTONE_SERVER** must be replaced with the corresponding slot name, in all fields and steps where applicable. For example, if configuring **CRESTONE_SERVER_SLOT_01**:
+
+- RFC Destination (step 2): **CRESTONE_SERVER_SLOT_01** 
+- Program ID (step 2): **CRESTONE_SERVER_SLOT_01** (must match the ID configured in the Crestone connector for that slot) 
+- secinfo file (step 4): TP: **CRESTONE_SERVER_SLOT_01** 
+- reginfo file (step 4): TP: **CRESTONE_SERVER_SLOT_01**
+
+The remaining technical parameters (connection type, activation type, gateway host/service, classical serialization, and conversion of outgoing bgRFC calls to outgoing qRFC calls) remain the same as in the **CRESTONE_SERVER** configuration.
+
+:::::info
+the number of RFC connections created defines the maximum degree of parallelism available. For example, with 5 slots configured, Crestone will be able to run up to 5 simultaneous extractions; without additional connections, processing will be strictly sequential.
+:::::
+
+Platform-side activation: in addition to the SAP-side configuration, parallelism must be enabled from the Crestone configuration (Settings → Extraction → RFC Parallelism), where an option exists to turn this mode on or off. If parallelism is disabled, Crestone will use only the CRESTONE_SERVER connection sequentially, even if additional slots are configured in SAP.
