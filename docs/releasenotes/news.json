@@ -1,4 +1,17 @@
 {
+  "1970": {
+    "version": "1.97.00",
+    "link": "197",
+    "date": "10/11/2026",
+    "description": "This update introduces the ability to process large SAP extractions in smaller, more manageable batches, ensuring stability and preventing timeouts. Additionally, we’ve refined the upload and integration experience with Microsoft services, including File Upload, SAP S/4HANA, and Azure AD. Finally, we’ve added new transformation functions to enrich your data extraction toolkit.",
+    "news": [
+      {
+        "title_slide": "Batch by field",
+        "description": "When an SAP table contains millions of records, extracting everything at once can exhaust the server’s memory or exceed the maximum dialog execution time (timeout), causing the extraction to stop halfway through. Batch by field divides the export into smaller parts, runs them sequentially, and combines the results into a single file that arrives complete at its destination. For the end user, the behavior is exactly the same as always: a single file, a single upload",
+        "icon": "SAP"
+      }
+    ]
+  },
   "1940": {
     "version": "1.94.00",
     "link": "194",
