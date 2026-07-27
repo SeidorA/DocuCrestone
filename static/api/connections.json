@@ -17,6 +17,14 @@
       "link": "/docs/documentation/sections/conections/source/sapabap"
     },
     {
+      "id": "sapbw",
+      "title": "SAP BW",
+      "description": "",
+      "iconName": "SAP",
+      "useBrand": true,
+      "link": "/docs/documentation/sections/conections/source/sap-bw"
+    },
+    {
       "id": "sapodata",
       "title": "SAP OData",
       "description": "Create a node to extract data from a source and load it into a destination.",
