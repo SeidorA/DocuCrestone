@@ -34,7 +34,7 @@ export default function Listarelece({ news, version }) {
                         <Titleicon icon={item.icon}>
                             <h2 style={{ marginBottom: '0px' }}>{item.title_slide}</h2>
                         </Titleicon>
-                        <p>{item.description}</p>
+                        <p style={{ whiteSpace: 'pre-wrap' }}>{item.description}</p>
 
                         <div style={{ textAlign: "center" }}>
                             <img src={impg} alt={item.title_slide} />

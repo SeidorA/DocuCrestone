@@ -55,7 +55,7 @@ export function Sliderelece({ version, items, title }: SlidereleceProps) {
               color: "var(--ifm-color-gray-hard)"
             }}> V {title} </h2>
             <h1>{items[current].title_slide}</h1>
-            <p>{items[current].description}</p>
+            <p style={{ whiteSpace: 'pre-wrap' }}>{items[current].description}</p>
           </div>
           <div className={styles.slider_bottom}>
             {current === itemnum ? (
@@ -115,7 +115,7 @@ function Rowlastrelece({ versionre, date, description, linkto }: { versionre?: s
         <small style={{
           color: "var(--ifm-color-gray-hard)"
         }}>Released on {date}</small>
-        <p>{description}</p>
+        <p style={{ whiteSpace: 'pre-wrap' }}>{description}</p>
         <a className={(styles.btnn)} href={reference}>Read more</a>
       </div>
     </div>
@@ -207,7 +207,7 @@ export function Slidersimple({ version, items }: SlidereleceProps) {
 
         <div className={styles.contenet} >
           <h1>{items[current].title_slide}</h1>
-          <p>{items[current].description}</p>
+          <p style={{ whiteSpace: 'pre-wrap' }}>{items[current].description}</p>
         </div>
 
       </div>
