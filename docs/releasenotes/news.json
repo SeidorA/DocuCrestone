@@ -1,4 +1,27 @@
 {
+  "1972": {
+    "version": "1.97.20",
+    "link": "1972",
+    "date": "28/07/2026",
+    "description": "This update expands data extraction and upload capabilities and streamlines the interface.",
+    "news": [
+      {
+        "title_slide": "Multi-Company Support for SAP Business One",
+        "description": "SAP Business One connections can now work with multiple Company Databases within a single connection, sharing a single username and password. \n  •    A single connection can manage multiple Company Databases instead of just one. \n  •    Each extraction node can work with one, several, or all of the Company Databases in the connection. \n  •    When extracting from more than one company database, the data is consolidated into a single file, with a “CompanyDB” column that identifies the source of each record. \n  •    The lists of company databases can be collapsed and expanded, keeping the view organized even when many databases are configured.",
+        "icon": "SAP"
+      },
+      {
+        "title_slide": "Dynamic Variables in OData Sources",
+        "description": "OData sources now support variables, a feature that was previously available only in table sources (SAP / SQL). \n  •    OData filters can include variables instead of fixed values.\n  •    Variables support dynamic values—for example, relative dates that are recalculated with each execution (such as the last 7 days)—eliminating the need to manually update filters.\n  •    They also support fixed values (text or numbers) when a one-time filter is needed.",
+        "icon": "OData"
+      },
+      {
+        "title_slide": "Replacing Data in Snowflake Destinations (Table Type)",
+        "description": "Snowflake Table-type destinations now offer the option to overwrite existing data during a load, rather than accumulating previous runs. just as was already the case for SQL Server.\n•    With this option enabled, if the table already exists, the previous data is deleted and the new data is loaded, while preserving the table structure.\n•    With this option disabled, the new data is appended to the existing data (previous behavior).",
+        "icon": "Snowflake"
+      }
+    ]
+  },
   "1971": {
     "version": "1.97.10",
     "link": "1971",
