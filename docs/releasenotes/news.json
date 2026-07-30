@@ -1,6 +1,6 @@
 {
   "1972": {
-    "version": "1.97.20",
+    "version": "1.97.2",
     "link": "1972",
     "date": "28/07/2026",
     "description": "This update expands data extraction and upload capabilities and streamlines the interface.",
@@ -23,7 +23,7 @@
     ]
   },
   "1971": {
-    "version": "1.97.10",
+    "version": "1.97.1",
     "link": "1971",
     "date": "28/07/2026",
     "description": "This update introduces new cloud storage extraction sources and database connectors, and enhances the visual experience with new icons and cards.",

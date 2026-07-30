@@ -1,8 +1,5 @@
 {
   "label": "Settings",
   "position": 4,
-  "collapsed": true,
-  "link": {
-    "type": "generated-index"
-  }
+  "collapsed": true
 }
