@@ -37,7 +37,7 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>Organize your connections, nodes and jobs in collaborative environments. </>
     ),
-    link: './settings',
+    link: './Settings',
   },
   {
     title: 'Monitor',

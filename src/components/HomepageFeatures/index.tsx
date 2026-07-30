@@ -58,7 +58,7 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>Organize your connections, nodes and jobs in collaborative environments. </>
     ),
-    link: 'docs/documentation/sections/settings#1-add-new-workspace',
+    link: 'docs/documentation/sections/Settings/workspaces',
   },
   {
     title: 'Monitor',

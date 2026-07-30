@@ -44,7 +44,7 @@ Add the name and description for the workspace.
 ### 4. Add members
 
 Select the workspace and add the users that will work in it, assigning a role to
-each one. See [Users, roles & permissions](./users-roles) for details.
+each one. See [Users](./user) and [Roles](./rol) for details.
 
 ![Add Members](/img/settings/ws/c.png)
 
