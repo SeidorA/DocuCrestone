@@ -132,11 +132,11 @@ Regarding the handling of outgoing bgRFCs, the option to convert outgoing bgRFCs
 5. Use of parallelism: additional RFC connections (slots)
 Each extraction performed by Crestone consumes one RFC connection. With only one connection configured **(CRESTONE_SERVER)**, extractions can only be processed sequentially, one at a time.
 If parallel processing is to be enabled, additional RFC connections must be created in SM59, following the same procedure detailed in steps **2) Maintain the RFC Destination**, **3) Test the Connection**, and **4) Configure SAP Gateway Security**, using EXACTLY the following destination names:
-- CRESTONE_SERVER_SLOT_01
-- CRESTONE_SERVER_SLOT_02
-- CRESTONE_SERVER_SLOT_03
-- CRESTONE_SERVER_SLOT_04
-- CRESTONE_SERVER_SLOT_05
+- CRES_SLOT_1
+- CRES_SLOT_2
+- CRES_SLOT_3 
+- CRES_SLOT_4
+- CRES_SLOT_5
 
 **Important:** 
 
