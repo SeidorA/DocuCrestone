@@ -36,6 +36,16 @@ export default function Listarelece({ news, version }) {
                         </Titleicon>
                         <p style={{ whiteSpace: 'pre-wrap' }}>{item.description}</p>
 
+                        {item.quicklinks && (
+                            <div style={{ marginTop: '1rem', marginBottom: '1.5rem', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                                {item.quicklinks.map((ql, idx) => (
+                                    <a key={idx} href={`/docs/documentation${ql.doc}`} className="button button--outline button--primary button--sm" style={{ textDecoration: 'none' }}>
+                                        {ql.text}
+                                    </a>
+                                ))}
+                            </div>
+                        )}
+
                         <div style={{ textAlign: "center" }}>
                             <img src={impg} alt={item.title_slide} />
                         </div>

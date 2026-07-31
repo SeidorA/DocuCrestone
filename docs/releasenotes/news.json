@@ -31,12 +31,36 @@
       {
         "title_slide": "New Cloud Storage Sources",
         "description": "Cloud storage services can now also be used as extraction sources (previously, they were available only as destinations):\n•    Amazon S3\n•    Google Cloud Storage\n•    Azure Storage\nIn all three cases, you can browse the contents of the bucket/container directly from the platform, filter by prefix to narrow down the files, and the system automatically detects the file format. Additionally, you can configure specific options based on the file type: delimiter and header for CSV/TSV, and worksheet for Excel files.\nThis allows you to extract data stored in the cloud without manual download steps.",
-        "icon": "Crestone"
+        "icon": "Crestone",
+        "quicklinks": [
+          {
+            "doc": "/sections/conections/source/aws-s3",
+            "text": "AWS S3"
+          },
+          {
+            "doc": "/sections/conections/source/gcp-storage",
+            "text": "Google Cloud Storage"
+          },
+          {
+            "doc": "/sections/conections/source/azure-storage",
+            "text": "Azure Storage"
+          }
+        ]
       },
       {
         "title_slide": "New database connectors",
         "description": "We've added two new connectors, available as both sources and destinations:\n•    IBM DB2\n•    SAP ASE (Sybase) — also includes SQL Script mode for custom queries.\nBoth allow you to explore databases, schemas, and columns, and preview the data before extraction.\n",
-        "icon": "Crestone"
+        "icon": "Crestone",
+        "quicklinks": [
+          {
+            "doc": "/sections/conections/source/db2",
+            "text": "IBM DB2"
+          },
+          {
+            "doc": "/sections/conections/source/sybase",
+            "text": "SAP ASE"
+          }
+        ]
       }
     ]
   },

@@ -57,6 +57,20 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
+          async sidebarItemsGenerator({ defaultSidebarItemsGenerator, ...args }) {
+            const sidebarItems = await defaultSidebarItemsGenerator(args);
+            if (args.item.dirName === 'releasenotes') {
+              const indexItemIndex = sidebarItems.findIndex(item => item.type === 'doc' && item.id === 'releasenotes/index');
+              if (indexItemIndex !== -1) {
+                const indexItem = sidebarItems.splice(indexItemIndex, 1)[0];
+                sidebarItems.reverse();
+                sidebarItems.unshift(indexItem);
+                return sidebarItems;
+              }
+              return sidebarItems.reverse();
+            }
+            return sidebarItems;
+          },
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
 

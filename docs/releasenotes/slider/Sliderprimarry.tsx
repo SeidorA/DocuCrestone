@@ -3,9 +3,15 @@ import styles from "./slider.module.css";
 import { CaralIcon } from "iconcaral2";
 
 
+type QuickLink = {
+  doc: string;
+  text: string;
+};
+
 type Entrada = {
   title_slide: string;
   description: string;
+  quicklinks?: QuickLink[];
 };
 
 type SlidereleceProps = {
@@ -56,6 +62,15 @@ export function Sliderelece({ version, items, title }: SlidereleceProps) {
             }}> V {title} </h2>
             <h1>{items[current].title_slide}</h1>
             <p style={{ whiteSpace: 'pre-wrap' }}>{items[current].description}</p>
+            {items[current].quicklinks && (
+              <div style={{ marginTop: '1rem', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                {items[current].quicklinks.map((ql, idx) => (
+                  <a key={idx} href={ql.doc} className="button button--outline button--primary button--sm" style={{ textDecoration: 'none' }}>
+                    {ql.text}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
           <div className={styles.slider_bottom}>
             {current === itemnum ? (
@@ -208,6 +223,15 @@ export function Slidersimple({ version, items }: SlidereleceProps) {
         <div className={styles.contenet} >
           <h1>{items[current].title_slide}</h1>
           <p style={{ whiteSpace: 'pre-wrap' }}>{items[current].description}</p>
+          {items[current].quicklinks && (
+            <div style={{ marginTop: '1rem', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              {items[current].quicklinks.map((ql, idx) => (
+                <a key={idx} href={ql.doc} className="button button--outline button--primary button--sm" style={{ textDecoration: 'none' }}>
+                  {ql.text}
+                </a>
+              ))}
+            </div>
+          )}
         </div>
 
       </div>
