@@ -140,13 +140,11 @@ If parallel processing is to be enabled, additional RFC connections must be crea
 
 **Important:** 
 
-These are the only slot names supported by the platform; Crestone recognizes a maximum of 5 slots, predefined with these exact names. No variants are supported (different names, different numbering, or a quantity greater than 5); any RFC connection created with a different name will not be recognized by Crestone as a valid parallelism slot.
-When configuring each slot, every reference to **CRESTONE_SERVER** must be replaced with the corresponding slot name, in all fields and steps where applicable. For example, if configuring **CRESTONE_SERVER_SLOT_01**:
-
-- RFC Destination (step 2): **CRESTONE_SERVER_SLOT_01** 
-- Program ID (step 2): **CRESTONE_SERVER_SLOT_01** (must match the ID configured in the Crestone connector for that slot) 
-- secinfo file (step 4): TP: **CRESTONE_SERVER_SLOT_01** 
-- reginfo file (step 4): TP: **CRESTONE_SERVER_SLOT_01**
+These are the only slot names supported by the platform; Crestone recognizes a maximum of 5 slots, predefined with these exact names. No variants are supported (different names, different numbering, or a quantity greater than 5); any RFC connection created with a different name will not be recognized by Crestone as a valid parallelism slot. When configuring each slot, every reference to CRESTONE_SERVER must be replaced with the corresponding slot name, in all fields and steps where applicable. For example, if configuring CRES_SLOT_1:
+- RFC Destination (step 2): CRES_SLOT_1
+- Program ID (step 2): CRES_SLOT_1(must match the ID configured in the Crestone connector for that slot)
+- secinfo file (step 4): TP: CRES_SLOT_1
+- reginfo file (step 4): TP: CRES_SLOT_1
 
 The remaining technical parameters (connection type, activation type, gateway host/service, classical serialization, and conversion of outgoing bgRFC calls to outgoing qRFC calls) remain the same as in the **CRESTONE_SERVER** configuration.
 
