@@ -25,7 +25,7 @@ This guide consolidates and streamlines the steps to upload and import the **Cre
 
 
 1. Download the transport pair that matches your SAP release:
-   - SAP S/4HANA: [`K901242.S4H`](/files/K901242.S4H) (cofile) and [`R901242.S4H`](/files/R901242.S4H)  (data file).
+   - SAP S/4HANA: [`K901243.S4H`](/files/K901243.S4H) (cofile) and [`R901243.S4H`](/files/R901243.S4H)  (data file).
    - SAP ECC: [`K900101.ABA`](/files/K900101.ABA) (cofile) and [`R900101.ABA`](/files/R900101.ABA)(data file). 
 2. Store the files locally without renaming them; SAP expects the `K*` and `R*` naming pattern.
 
