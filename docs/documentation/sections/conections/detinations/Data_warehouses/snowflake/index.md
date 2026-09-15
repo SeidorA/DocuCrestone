@@ -5,7 +5,7 @@ useBrand: true
 title: "Snowflake"
 description: "Create a node to export data from a source and load it into a destination."
 ---
-import {Cardcre} from '../../../../cards/cards.tsx'
+import {Cardcre} from '../../../../../cards/cards.tsx'
 
 ## How to create a destination with Snowflake
 

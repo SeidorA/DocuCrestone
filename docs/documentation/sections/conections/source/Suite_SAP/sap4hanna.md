@@ -2,7 +2,7 @@
 sidebar_position: 1
 iconName: "SAP"
 useBrand: true
-title: "SAP HANA"
+title: "SAP S/4HANA"
 description: "Create a source with SAP HANA"
 ---
 ## How to create a source with SAP HANA
