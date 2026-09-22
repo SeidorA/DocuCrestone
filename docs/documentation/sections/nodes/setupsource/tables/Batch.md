@@ -142,8 +142,6 @@ Steps to configure it:
 1. **Master table**: search for the table (minimum 2 characters) and select it from the results
    (up to 50 matches are shown, sorted alphabetically).
 
-   ![Search master table](/img/node/table/batch/i.png)
-
 2. **Master field**: once the table is selected, choose the field the distinct values will be
    read from.
 
@@ -151,13 +149,11 @@ Steps to configure it:
    the values (for example `WERKS = '1000'`). If left empty, every distinct value of the field is
    read.
 
-   ![Master field and optional where clause](/img/node/table/batch/j.png)
-
 4. **Preview values**: a button to preview the values that would be resolved at that moment. It's
    only for checking purposes — **it isn't saved**, the actual values are resolved again on every
    job execution. The query brings up to 5000 rows and discards empty or duplicate values.
 
-   ![Preview values](/img/node/table/batch/k.png)
+![Preview values](/img/node/table/batch/i.png)
 
 If the selected field has many distinct values, the batch will generate one sub-extraction per
 value — keep the volume in mind (and use a "Where clause" to narrow it down) before using
@@ -177,7 +173,7 @@ With the **Enable batching** switch on and the type/mode configured, click **Sav
 configuration on the node. If you turn the switch off, the batch configuration is removed from the
 node automatically (there's no need to click Save for that).
 
-![Save the batch configuration](/img/node/table/batch/l.png)
+![Save the batch configuration](/img/node/table/batch/j.png)
 
 ---
 
