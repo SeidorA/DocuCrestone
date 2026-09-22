@@ -54,6 +54,7 @@ The communication between SAP and CRESTONE is established through a **TCP/IP RFC
 - Configure it as a **Registered Server Program** with the agreed Program ID.  
 - Validate the destination using the **Connection Test**.
 - Configure SAP Gateway security.
+- For parallel extractions, additional registered server programs (`CRES_SLOT_1` … `CRES_SLOT_N`, one per concurrent extraction) must also be registered — covered in detail in a separate document.
 
 
 👉 Detailed procedure: [Create RFC Connection](./step_5.0_create-rfc-connection.md)  
