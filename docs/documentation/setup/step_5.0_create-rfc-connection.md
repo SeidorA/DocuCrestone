@@ -131,25 +131,30 @@ Regarding the handling of outgoing bgRFCs, the option to convert outgoing bgRFCs
 4. Configure SAP Gateway security
 5. Use of parallelism: additional RFC connections (slots)
 Each extraction performed by Crestone consumes one RFC connection. With only one connection configured **(CRESTONE_SERVER)**, extractions can only be processed sequentially, one at a time.
-If parallel processing is to be enabled, additional RFC connections must be created in SM59, following the same procedure detailed in steps **2) Maintain the RFC Destination**, **3) Test the Connection**, and **4) Configure SAP Gateway Security**, using EXACTLY the following destination names:
+If parallel processing is to be enabled, additional RFC connections must be created in SM59, following the same procedure detailed in steps **2) Maintain the RFC Destination**, **3) Test the Connection**, and **4) Configure SAP Gateway Security**, using the following naming pattern:
 - CRES_SLOT_1
 - CRES_SLOT_2
-- CRES_SLOT_3 
-- CRES_SLOT_4
-- CRES_SLOT_5
+- CRES_SLOT_3
+- ... CRES_SLOT_N
 
-**Important:** 
+**Important:**
 
-These are the only slot names supported by the platform; Crestone recognizes a maximum of 5 slots, predefined with these exact names. No variants are supported (different names, different numbering, or a quantity greater than 5); any RFC connection created with a different name will not be recognized by Crestone as a valid parallelism slot. When configuring each slot, every reference to CRESTONE_SERVER must be replaced with the corresponding slot name, in all fields and steps where applicable. For example, if configuring CRES_SLOT_1:
+The number of slots is configurable — there's no fixed maximum. Create as many `CRES_SLOT_N` destinations in SAP as parallel connections you want to enable, always starting at `CRES_SLOT_1` and numbering sequentially with no gaps. Any name that doesn't follow the `CRES_SLOT_<number>` pattern will not be recognized by Crestone as a valid parallelism slot. When configuring each slot, create a **new** RFC destination (`CRESTONE_SERVER` is not modified — it stays as-is, as the fallback) using the slot name in every field where `CRESTONE_SERVER` was used as the example. For instance, if configuring CRES_SLOT_1:
 - RFC Destination (step 2): CRES_SLOT_1
-- Program ID (step 2): CRES_SLOT_1(must match the ID configured in the Crestone connector for that slot)
+- Program ID (step 2): CRES_SLOT_1 (must match the ID configured in the Crestone connector for that slot)
 - secinfo file (step 4): TP: CRES_SLOT_1
 - reginfo file (step 4): TP: CRES_SLOT_1
 
 The remaining technical parameters (connection type, activation type, gateway host/service, classical serialization, and conversion of outgoing bgRFC calls to outgoing qRFC calls) remain the same as in the **CRESTONE_SERVER** configuration.
 
+> **Tip:** in the **secinfo** and **reginfo** files you don't need one entry per slot — a single wildcard entry `TP: CRES_SLOT_*` covers every slot you create, present and future. That way each file only needs two entries in total: one for `CRESTONE_SERVER` and one (wildcard) for all `CRES_SLOT_*`.
+
 :::::info
-the number of RFC connections created defines the maximum degree of parallelism available. For example, with 5 slots configured, Crestone will be able to run up to 5 simultaneous extractions; without additional connections, processing will be strictly sequential.
+the number of RFC connections created defines the maximum degree of parallelism available. For example, with 8 slots configured, Crestone will be able to run up to 8 simultaneous extractions; without additional connections, processing will be strictly sequential.
 :::::
 
-Platform-side activation: in addition to the SAP-side configuration, parallelism must be enabled from the Crestone configuration (Settings → Extraction → RFC Parallelism), where an option exists to turn this mode on or off. If parallelism is disabled, Crestone will use only the CRESTONE_SERVER connection sequentially, even if additional slots are configured in SAP.
+Platform-side activation: in addition to the SAP-side configuration, it must be activated from the tool — see the **Parallel Extraction** section in Settings.
+
+:::::info
+Before creating several slots, take your SAP system's capacity into account: the number of slots you can actually run in parallel is limited by the resources available on your application server/gateway (available work processes). Creating more slots than your SAP can sustain won't improve performance — coordinate with your BASIS team before scaling up.
+:::::

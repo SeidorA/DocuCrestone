@@ -20,7 +20,7 @@ Select the “table” type, enter the table name, and click “Search” to fin
 ![Select the specific table](/img/node/table/new/b.png)
 
 :::::tip
-If you need to configure the nodes in more detail, we recommend you read the [SQL Editor](../sqleditor/VariablesinNodes) page.
+If you need to configure the nodes in more detail, we recommend you read the [SQL Editor](../../sqleditor/VariablesinNodes) page.
 :::::
 
 ### 3. Select the Fields 

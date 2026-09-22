@@ -48,7 +48,7 @@ According to the source configure the node to extract the necessary
     description="For detailed instructions on configuring a node when SAP S/4HANA is used as the source."
     icon="SAP"
     brand={true}
-    link= '/docs/documentation/sections/nodes/setupsource/table'
+    link= '/docs/documentation/sections/nodes/setupsource/tables/table'
 />
   </TabItem>
   <TabItem value="SAP ABAP" label="SAP ABAP" default>
@@ -58,7 +58,7 @@ According to the source configure the node to extract the necessary
             title="Table"
             description="Direct extraction from transparent tables or views."
             icon="SAP"
-            link='/docs/documentation/sections/nodes/setupsource/table'
+            link='/docs/documentation/sections/nodes/setupsource/tables/table'
         />
         <Feature
             title="Reports"

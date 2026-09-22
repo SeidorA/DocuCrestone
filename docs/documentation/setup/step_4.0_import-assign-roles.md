@@ -60,3 +60,50 @@ This guide walks through importing the standard **ZCRESTONE** authorization role
 1. Download `ZCRESTONE.SAP` from the installer package.
 2. Upload the role in transaction `PFCG` via **Role ▸ Upload**.
 3. Assign `ZCRESTONE` to the Crestone technical user and run a user comparison.
+
+---
+
+## SAP Roles in Crestone: Technical Roles vs. Business Roles
+
+### Technical Roles (delivered by Crestone)
+
+Crestone provides a set of generic, reusable SAP roles to enable the RFC connection:
+
+| Role | Purpose |
+|---|---|
+| ZCRESTONE | Base/umbrella role for the integration |
+| ZCRGENERAL | General RFC connection authorizations |
+| ZCRREPORT | Report execution |
+| ZCRTABLE | Table reading |
+| ZCRTODP | Metadata/extractor reading (TODP) |
+
+These roles define which technical operations the integration user can perform (read tables, run
+extractors, query metadata), and are read-only: Crestone does not write or modify data in SAP.
+
+Being product roles, they are delivered with the organizational objects (Company Code, Plant,
+Sales Org., etc.) unrestricted — typically with `*` — because Crestone cannot anticipate in
+advance what the correct business scope is for each customer.
+
+### Business Roles (customer's / Basis team's responsibility)
+
+The business scope — which company codes, plants, areas or organizations the integration's
+technical user should have access to — is a decision that belongs to the customer, based on
+their organizational structure and security policies (principle of least privilege).
+
+Before putting the user into production, the customer's Basis team must:
+
+1. Review the technical roles delivered by Crestone.
+2. Restrict the relevant organizational objects (e.g., replace the `*` in the Company Code field
+   with the specific list of company codes the integration user should access).
+3. Validate that the technical user only has visibility over the data that will actually be
+   extracted.
+
+Example: if the integration should only read data from a specific company code, the Basis team
+must edit the corresponding role and replace the `*` in the Company Code object with that company
+code's code (or the list of applicable company codes), instead of leaving access open to all of
+them.
+
+This separation (generic technical roles + customer-specific business restriction) allows the
+same Crestone product to be installed in any SAP environment without needing to know its
+organizational structure in advance, delegating the fine-tuning of authorizations to each
+customer according to their own security policy.
