@@ -2,6 +2,7 @@
 iconName: "SAP"
 useBrand: true
 slug: ImportOTs
+sidebar_position: 3
 ---
 
 # Step 2 — Import Transport Requests (OTs) in SAP

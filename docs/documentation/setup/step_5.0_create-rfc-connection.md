@@ -1,3 +1,7 @@
+---
+sidebar_position: 6
+---
+
 # Step 5 — Create the RFC Connection in SAP
 
 This guide shows how to set up the TCP/IP RFC destination that Crestone will use to communicate with your SAP system.
@@ -147,7 +151,22 @@ The number of slots is configurable — there's no fixed maximum. Create as many
 
 The remaining technical parameters (connection type, activation type, gateway host/service, classical serialization, and conversion of outgoing bgRFC calls to outgoing qRFC calls) remain the same as in the **CRESTONE_SERVER** configuration.
 
-> **Tip:** in the **secinfo** and **reginfo** files you don't need one entry per slot — a single wildcard entry `TP: CRES_SLOT_*` covers every slot you create, present and future. That way each file only needs two entries in total: one for `CRESTONE_SERVER` and one (wildcard) for all `CRES_SLOT_*`.
+**Tip:** in the **secinfo** and **reginfo** files you don't need one entry per slot — a single
+wildcard entry `TP: CRES_SLOT_*` covers every slot you create, present and future. That way each
+file only needs two entries in total: one for `CRESTONE_SERVER` (added in step 4 above) and one
+(wildcard) for all `CRES_SLOT_*`:
+
+```
+# secinfo
+P TP=CRESTONE_SERVER USER=* HOST=* USER-HOST=*
+P TP=CRES_SLOT_*     USER=* HOST=* USER-HOST=*
+```
+
+```
+# reginfo
+P TP=CRESTONE_SERVER HOST=* ACCESS=* CANCEL=*
+P TP=CRES_SLOT_*     HOST=* ACCESS=* CANCEL=*
+```
 
 :::::info
 the number of RFC connections created defines the maximum degree of parallelism available. For example, with 8 slots configured, Crestone will be able to run up to 8 simultaneous extractions; without additional connections, processing will be strictly sequential.

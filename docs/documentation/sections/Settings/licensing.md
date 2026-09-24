@@ -74,4 +74,3 @@ your plan. You can check the current consumption in the licensing section.
 | `MAX_PRODUCTIVE_CONNECTIONS_REACHED` | You reached the limit of productive connections. | Remove a productive connection or upgrade your plan. |
 | `MAX_RECORDS_REACHED` | You reached the monthly record limit. | Wait for the next monthly period or upgrade your plan. |
 | `NON_PRODUCTIVE_SOURCE_CONNECTIONS` | Your plan only allows non-productive source connections. | Use a non-productive system or upgrade your plan. |
-```

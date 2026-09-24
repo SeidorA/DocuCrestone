@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Housekeeping Procedure
 
 This document describes how to free up disk space on a CRESTONE server. 
@@ -7,7 +11,7 @@ This document describes how to free up disk space on a CRESTONE server.
 ## 1. Prerequisites
 Before starting, make sure you have:
 
-- An existing CRESTONE installation. See [Installation Procedure](./) if you haven't installed it yet.
+- An existing CRESTONE installation. See [Installation Procedure](../crestone_installation/) if you haven't installed it yet.
 - `sudo` privileges on the server.
 
 > If your installation is on a version **older than v1.97.6**, it doesn't have `housekeeping.sh` yet. Download it first:

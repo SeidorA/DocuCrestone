@@ -2,6 +2,7 @@
 title: Step 6 — Create the Source Connection in CRESTONE 
 slug: CreatetheSource
 description: "This document describes the step-by-step procedure required to create the source connection in CRESTONE to connect to an SAP system."
+sidebar_position: 7
 ---
 
 In the CRESTONE administration panel:  

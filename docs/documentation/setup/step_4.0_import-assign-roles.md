@@ -1,3 +1,6 @@
+---
+sidebar_position: 5
+---
 
 # Step 4 — Import and Assign Crestone SAP Role
 

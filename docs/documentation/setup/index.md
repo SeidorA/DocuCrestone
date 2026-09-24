@@ -58,6 +58,7 @@ The communication between SAP and CRESTONE is established through a **TCP/IP RFC
 
 
 👉 Detailed procedure: [Create RFC Connection](./step_5.0_create-rfc-connection.md)  
+👉 Troubleshooting: [SAP RFC Troubleshooting](./sap_rfc_troubleshooting/index.md)
 
 ---
 
@@ -84,6 +85,15 @@ Finally, to validate the integration:
 1. Create a **node** that uses the SAP connection previously configured.  
 2. Define a **test job** (for example, extract data from a standard table such as `KNA1`).  
 3. Execute the job and validate that the extraction is successful.  
+
+---
+
+## 9. Installation Acceptance Checklist
+Before calling the installation done, run through the full checklist — containers, users,
+license, SAP role/RFC, connections, node/job, and Monitor. Don't close it out just because the
+UI loaded or the installer showed a success message.
+
+👉 Full checklist (with a downloadable fillable PDF in English/Spanish): [Installation Acceptance Checklist](./step_9_checklist.md)
 
 ---
 

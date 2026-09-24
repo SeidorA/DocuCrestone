@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Upgrade Procedure
 
 This document describes how to update an existing CRESTONE installation to a new version. 
@@ -7,7 +11,7 @@ This document describes how to update an existing CRESTONE installation to a new
 ## 1. Prerequisites
 Before starting, make sure you have:
 
-- An existing CRESTONE installation. See [Installation Procedure](./) if you haven't installed it yet.
+- An existing CRESTONE installation. See [Installation Procedure](../crestone_installation/) if you haven't installed it yet.
 - `sudo` privileges on the server.
 
 > If your installation is on a version **older than v1.97.6**, it doesn't have `upgrade.sh` yet. Download it first:
