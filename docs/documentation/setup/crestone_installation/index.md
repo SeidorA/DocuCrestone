@@ -105,7 +105,11 @@ After installation completes, test the system by opening the following URLs in y
   ``` 
 - View logs:
   ```bash
-  sudo docker compose -f ./docker-compose-full.yml -p crestone logs -f --tail=200
+  sudo docker logs crestone-back --tail 200
+  ``` 
+  - View logs in live:
+  ```bash
+  sudo docker logs -f crestone-back --tail 200
   ``` 
 - Restart all services:
   ```bash
@@ -115,6 +119,18 @@ After installation completes, test the system by opening the following URLs in y
   ```bash
   sudo bash ./restart.sh --ensure-up
   ```  
+- Monitor server resources live (install if missing: `sudo apt install -y htop`):
+  ```bash
+  htop
+  ```
+- Check disk space:
+  ```bash
+  df -h
+  ```
+- Check disk space used by Docker (images, volumes, build cache):
+  ```bash
+  sudo docker system df
+  ```
 ---
 
 ✅ **You are now ready to use CRESTONE.**

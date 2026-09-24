@@ -2,6 +2,7 @@
 title: Step 7 — Create the Destination Connection in CRESTONE 
 slug: Createdestination
 description: "This document describes the step-by-step procedure required to create the destination connection in CRESTONE to connect to an SAP system."
+sidebar_position: 8
 ---
 
 In the CRESTONE administration panel:  

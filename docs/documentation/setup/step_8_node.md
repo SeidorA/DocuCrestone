@@ -2,6 +2,7 @@
 slug: create-test-node-job
 title: "Step 8 — Create a Test Node and Job in CRESTONE"
 description: "Steps to create a test node and job in CRESTONE to validate SAP integration."
+sidebar_position: 9
 ---
   
 Finally, to validate the integration:  
