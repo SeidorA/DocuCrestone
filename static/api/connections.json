@@ -2,7 +2,7 @@
   "origins": [
     {
       "id": "sap4hanna",
-      "title": "SAP S/4HANA",
+      "title": "SAP HANA",
       "description": "Create a source with SAP HANA",
       "iconName": "SAP",
       "useBrand": true,
