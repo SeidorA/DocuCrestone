@@ -22,7 +22,7 @@ You will be prompted to enter the credentials needed to connect to your SAP ABAP
 **Host Address:**
 -   Enter the **host address** of the SAP ABAP system. This is typically the **IP address** or **DNS name** of the SAP server. You can obtain this from the system administrator or from the SAP system's network settings.
 
-**Instance Number:** 
+**Instance Number:** 
 -   Enter the **instance number** assigned to your SAP ABAP system. This is a 3-digit number (e.g., 00, 01) used to identify the SAP system instance. You can find this in the SAP GUI or ask your system administrator for this value.
 
 **User:**
@@ -31,8 +31,13 @@ You will be prompted to enter the credentials needed to connect to your SAP ABAP
 **Client Number:**
 -   Enter the **client number** for the SAP system. This is typically a 3-digit number (e.g., 100, 200) used to identify the logical client within the system. You can obtain this from the SAP GUI or ask your system administrator.
 
+**SAP Router** *(optional)*:
+-   If your SAP system is only reachable through a **SAProuter**, enter the SAProuter string here (e.g., `/H/router/S/service/H/ashost`). Leave this empty if Crestone can reach the SAP system directly. Ask your BASIS/network team if you're not sure whether a SAProuter is required for this system.
+
 **Password:**
 -   Enter the **password** associated with the SAP username. This is the same password you use when logging into the SAP system.
+
+<!-- screenshot: SAP ABAP credentials form including the "SAP Router" field -->
 
 ## 3. Test the connection:
 
@@ -59,4 +64,5 @@ You will be prompted to enter the credentials needed to connect to your SAP ABAP
 | Instance Number | Three-digit instance number (e.g., 00, 01)            | `02`               |
 | Client Number   | Logical client number of the SAP system (e.g., 100)   | `100`              |
 | User            | SAP user with the required permissions                | `abap_user`        |
+| SAP Router      | *(Optional)* SAProuter string, only if the system is reachable through one | `/H/router/S/service/H/ashost` |
 | Password        | Password of the SAP user                              | — (hidden)         |

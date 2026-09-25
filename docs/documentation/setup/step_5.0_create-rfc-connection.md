@@ -16,6 +16,16 @@ This guide shows how to set up the TCP/IP RFC destination that Crestone will use
 - Technical user dedicated to Crestone integration with the role `ZCRESTONE` assigned (see Step 4).
 - Hostname/IP, system number (SYSNR), client, and logon language for the SAP application server where Crestone will connect.
 
+:::::info
+**Connecting through a SAProuter:** if the SAP system Crestone connects to is only reachable
+through a **SAProuter** (common when SAP sits behind a firewall/DMZ), enter the SAProuter string
+in the **SAP Router** field of the connector configuration in Crestone (available on the
+[SAP ABAP](/docs/documentation/sections/conections/source/Suite_SAP/sapabap) and
+[SAP BW](/docs/documentation/sections/conections/source/Suite_SAP/sap-bw) source connectors).
+Leave it empty if Crestone reaches the application server directly. This is separate from the RFC
+destination configured below in SAP.
+:::::
+
 ---
 
 ## 1) Open the RFC configuration

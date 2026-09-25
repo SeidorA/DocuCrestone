@@ -118,7 +118,7 @@ This ensures each extraction continues from the last processed delta, maintainin
 ### 🧩 Common Examples of Delta-Enabled Extractors  
 
 | Module | Extractor | Description |
-|---------|------------|-------------|
+|---------|------------|--------------|
 | SD | `2LIS_11_VAHDR` | Sales Document Header |
 | SD | `2LIS_11_VAITM` | Sales Document Item |
 | MM | `2LIS_02_HDR` | Purchase Order Header |
@@ -159,72 +159,18 @@ With this setup, CRESTONE ensures robust, auditable, and fully automated **delta
 ![alt text](/img/incremental/incremental_2.2.image.png)
 ---
 
-## 3. Table Change Data Capture (CDC) with SAP Change Documents  
+## 3. Table Change Data Capture (CDC) with SAP Change Documents
 
-**CRESTONE** supports **Change Data Capture (CDC)** using SAP’s **change-document framework** and control tables (`CDHDR`, `CDPOS`) or via **direct table-level pointers** for standard master and transactional data.  
-This approach tracks **inserts, updates, and deletes** performed on business objects or tables for which change tracking is active in SAP.
+**CRESTONE** also supports **Change Data Capture (CDC)** at the table level, using SAP's
+**change-document framework** and control tables (`CDHDR`, `CDPOS`) or direct table-level
+pointers for standard master and transactional data — tracking **inserts, updates, and deletes**
+performed on the tables you select.
 
----
+This is configured directly on the **CDC extraction node** (`Source: SAP ABAP`, `Type: Table CDC`),
+which has its own dedicated guide with the step-by-step configuration, the **CDC Config** fields,
+and the pointer management actions (**Reset Pointer**, **Update Pointer without Extraction**):
 
-### 🔧 Configuration in CRESTONE  
-
-In the **Extraction Node Configuration**, select:
-
-- **Source:** `SAP ABAP`  
-- **Type:** `Table CDC`  
-- **Base Table:** e.g., `MAKT` (Material Descriptions)
-
-CRESTONE will automatically map the table fields and enable **CDC Config** mode, where a **pointer** is maintained for incremental extraction.  
-
-Once the initial load (initialization) is executed, CRESTONE stores a pointer that represents the last successful extraction timestamp:
-
-| Field | Description |
-|--------|-------------|
-| **Pointer** | Indicates the last record processed or timestamp used for CDC continuation. |
-| **Last execution** | Timestamp of the last successful CDC run. |
-| **Status** | Shows whether the CDC process is *Initialized* or pending. |
-
-Example (from CRESTONE UI):  
-```
-Pointer: 20251001151851  
-Last execution: 20251001151851  
-Status: Initialized
-```
-
-This ensures that only new or modified records since the last pointer are captured in subsequent extractions.
-
----
-
-### 🧭 CDC Pointer Management  
-
-CRESTONE provides a control interface similar to delta extractors to manage the CDC pointer lifecycle:
-
-| Action | Description |
-|---------|--------------|
-| **Reset Pointer** | Reinitializes the CDC process by resetting the pointer to zero and clearing its record from the control table. Use this when a full reload is required. |
-| **Update Pointer without Extraction** | Updates the pointer position without performing a data extraction. Useful for synchronization or skipping a known data window. |
-
-This allows users to manually control or realign the CDC process without SAP GUI access.
-
----
-
-### ✅ Advantages  
-- Captures both **new and modified records** with high accuracy.  
-- Fully aligned with **SAP change-document logic**, ensuring consistency with business transactions.  
-- Maintains an internal pointer for efficient incremental loads.  
-- Can be applied to **master data** (e.g., `MARA`, `MAKT`, `KNA1`) or **transactional data** (e.g., `VBAK`, `VBRK`) where CDC logic is available.
-
----
-
-### ⚙️ Considerations  
-- Requires that **change-document tracking** is enabled for the corresponding SAP object.  
-- Not available for all tables — only those registered in SAP’s change-document framework or those compatible with table-based CDC logic.  
-- May introduce additional system load on very active change tables.  
-- Proper pointer management is essential to prevent duplication or data gaps.  
-
----
-
-By leveraging **Table CDC**, CRESTONE provides a granular, low-latency mechanism to detect and replicate data changes from SAP tables, ensuring near real-time synchronization without requiring a full data reload.
+👉 **[Configure a Table CDC node](/docs/documentation/sections/nodes/setupsource/cdc)**
 
 ![alt text](/img/incremental/incremental_3.1.image.png)
 
@@ -241,4 +187,3 @@ In complex environments, a **combination of strategies** may be applied. For exa
 ---
 
 ✅ CRESTONE’s incremental load framework adapts to any SAP module — from simple master data updates to complex transactional histories — while minimizing data transfer and ensuring consistency across loads.
-
