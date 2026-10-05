@@ -1,12 +1,47 @@
 ---
-title: "Step 9 — Installation Acceptance Checklist"
+title: "Installation Checklist"
 description: "End-to-end checklist to validate a Crestone installation before calling it done."
-sidebar_position: 10
+sidebar_position: 3
 ---
+
+# Installation Checklist
 
 Use this checklist end to end for every new Crestone installation with an SAP source. Don't
 mark a section done just because the UI loaded or the installer showed a success message —
 each item only counts once the thing it describes actually happened.
+
+## Download a fillable copy
+
+Prefer to work from a document you can check off and keep as evidence? Download the fillable
+PDF version — same checklist, with real checkboxes:
+
+- 📄 [Download in English](/files/Crestone-Installation-Checklist-EN.pdf)
+- 📄 [Descargar en español](/files/Crestone-Installation-Checklist-ES.pdf)
+
+---
+
+## Start here: define the SAP source
+
+Ask the client which kind of SAP source they'll extract from **before** requesting anything else
+— it decides which network and SAP-side requirements apply.
+
+| Source | How Crestone connects | Applies |
+|---|---|---|
+| **SAP ABAP** (ECC, S/4HANA on-premise, RISE): tables, reports, BAPIs, CDC | RFC, through the SAP microservice | Section 4.1 |
+| **SAP OData** (Gateway services, extractors/ODP) | HTTPS straight to the OData service | Section 4.2 |
+
+> If the client needs **extractors (2LIS_\*, ODP)**, they have to go through OData, not RFC: since
+> June 2026 SAP blocks ODP-RFC for external systems (SAP Note 3255746 — see
+> [our blog post](/blog/sap-note-3255746-data-integration)).
+> If the client uses both kinds of source, complete 4.1 and 4.2.
+>
+> Other SAP sources: **SAP BW** connects over RFC like ABAP, so 4.1 applies plus the extra
+> authorizations listed on the SAP BW connector page. **Business One** and **ByDesign** are
+> OData-based, so 4.2 applies. **SAP HANA** (direct database connection) isn't covered by this
+> checklist yet.
+
+- [ ] SAP source confirmed with the client (ABAP, OData, or both), and which objects will be extracted
+  *Seidor / client*
 
 ---
 
@@ -14,7 +49,7 @@ each item only counts once the thing it describes actually happened.
 
 - [ ] Server meets the minimums (230 GB disk, 16 GB RAM, 8 CPU cores, 4 GB swap), x86_64 architecture
   *Client infrastructure*
-- [ ] Ports 80/443/81/7000/22 enabled as needed (see [Minimum Technical Requirements](./crestone_installation/step_1.1_crestone_min_requirements.md))
+- [ ] Ports 80/443/81/7000/22 enabled as needed (see [Minimum Technical Requirements](./step_1.1_crestone_min_requirements.md))
   *Client network team*
 - [ ] Outbound TCP/587 to `email-smtp.us-east-1.amazonaws.com` (AWS SES) enabled — it's the only outbound port in the whole block; if it's missing there's no visible error, the confirmation email just never goes out
   *Client network team*
@@ -26,7 +61,9 @@ each item only counts once the thing it describes actually happened.
   *Client infrastructure*
 - [ ] Decided whether to use the default `nip.io` hostname or a custom DNS from the start (see the risk of it being blocked by filters like FortiGuard)
   *Seidor / client*
-- [ ] If the source is SAP: client's sysnr confirmed, and the network scenario defined (direct access / VPN / SAProuter)
+- [ ] If the source is SAP ABAP: client's sysnr confirmed, and the network scenario defined (direct access / VPN / SAProuter)
+  *Seidor / Basis*
+- [ ] If the source is SAP OData: the service's base URL (host and HTTPS port) defined and reachable from the Crestone server
   *Seidor / Basis*
 
 ## 2. Install Crestone
@@ -57,7 +94,11 @@ each item only counts once the thing it describes actually happened.
 - [ ] MFA configured if the client's security policy requires it
   *Client*
 
-## 4. SAP — role, user, and RFC connection
+## 4. SAP source
+
+Complete 4.1, 4.2, or both, according to the source defined at the start.
+
+### 4.1 SAP ABAP — role, user, and RFC connection
 
 - [ ] Transport requests (OTs) imported into SAP without errors
   *Basis*
@@ -85,6 +126,27 @@ each item only counts once the thing it describes actually happened.
   *Seidor · confirm against the real `ashost`*
 - [ ] If parallelism will be used: the number of `CRES_SLOT_N` created in SAP matches what's configured in Settings → Parallel Extraction
   *Seidor / Basis*
+
+### 4.2 SAP OData — what to request from the client
+
+OData sources don't use the RFC layer, so the transport requests, the `ZCRESTONE` role, and the
+RFC connection (Steps 2–5 of the setup guide) don't apply — go straight to the connection in
+Step 6.
+
+- [ ] OData service(s) published and active in the SAP Gateway (`/IWFND/MAINT_SERVICE`); for extractors, OData services built on ODP
+  *Basis*
+- [ ] Service base URL confirmed (without the service name — the service is chosen later, on the node)
+  *Basis*
+- [ ] Authentication method agreed: Basic Auth or API Key
+  *Basis / client*
+- [ ] Technical user with authorization to run the services (typically `S_SERVICE`) and access to the data each service exposes
+  *Basis / Security*
+- [ ] HTTPS port of the SAP server (ICM / Web Dispatcher) open from Crestone
+  *Client network team*
+- [ ] OData source connection test passes
+  *Seidor*
+- [ ] If the services are extractors/ODP: node timeout set generously (the first page can take several minutes; real tests needed 30+ minutes)
+  *Seidor*
 
 ## 5. Connections in Crestone (source and destination)
 
@@ -125,13 +187,3 @@ each item only counts once the thing it describes actually happened.
   *Seidor*
 - [ ] Evidence kept: rows extracted, duration, screenshots of the key screens (no visible credentials/secrets)
   *Seidor*
-
----
-
-## Download a fillable copy
-
-Prefer to work from a document you can check off and keep as evidence? Download the fillable
-PDF version — same checklist, with real checkboxes:
-
-- 📄 [Download in English](/files/Crestone-Installation-Checklist-EN.pdf)
-- 📄 [Descargar en español](/files/Crestone-Installation-Checklist-ES.pdf)
