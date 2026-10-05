@@ -88,13 +88,4 @@ Finally, to validate the integration:
 
 ---
 
-## 9. Installation Acceptance Checklist
-Before calling the installation done, run through the full checklist — containers, users,
-license, SAP role/RFC, connections, node/job, and Monitor. Don't close it out just because the
-UI loaded or the installer showed a success message.
-
-👉 Full checklist (with a downloadable fillable PDF in English/Spanish): [Installation Acceptance Checklist](./step_9_checklist.md)
-
----
-
 ✅ Once these steps are completed, the connection between **CRESTONE** and **SAP** will be fully configured and ready for use in data extraction and replication processes.

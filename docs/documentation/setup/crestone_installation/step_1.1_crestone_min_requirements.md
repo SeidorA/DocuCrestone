@@ -6,12 +6,19 @@ sidebar_position: 1
 
 This document describes the minimum technical requirements for the server where the CRESTONE platform will be installed.
 
+:::::tip
+Before asking the client for any requirement (servers, ports, domains, users), review the
+[Installation Checklist](./installation_checklist.md). It covers the whole installation —
+before, during, and after — and a downloadable fillable PDF (English/Spanish) is available
+there, so you can send the client one complete list instead of asking for things piecemeal.
+:::::
+
 
 ---
 
 ## Supported Deployment Environments
 
-### Cloud (Azure or AWS)
+### Cloud (Azure, AWS or GCP)
 - **Azure VM Families:**  
   - Compute Optimized (F-series)  
   - Memory Optimized (E-series)  
@@ -20,9 +27,16 @@ This document describes the minimum technical requirements for the server where 
   - Compute Optimized (C-series)  
   - Memory Optimized (R-series)  
 
+- **GCP Machine Families:**  
+  - Compute Optimized (C2/C3-series)  
+  - Memory Optimized (M-series, or N2 high-memory)  
+
 - **Recommended Sizes:**  
   - Azure: F16 or higher (F-series), E16/E20/E32 or higher (E-series)  
   - AWS: t3.xlarge or higher  
+  - GCP: c2-standard-8 or higher  
+
+> Crestone isn't tied to a specific cloud provider: any server that meets the requirements below and runs a supported operating system works — physical, virtual machine, or any other cloud provider.
 
 ### On-Premise
 - **Processor:** Minimum 1 CPU with 4 cores 
@@ -32,7 +46,10 @@ This document describes the minimum technical requirements for the server where 
 ## Operating System
 - **Azure:** Ubuntu Server 22.04 LTS  
 - **AWS:** Ubuntu 22.04 or higher  
+- **GCP:** Ubuntu 22.04 or higher  
 - **On-Premise:** Ubuntu 22.04 or higher (best practice) 
+
+> The installer is built for **Ubuntu/Debian-based** Linux servers: it uses `apt` to install missing packages and configures Docker from Docker's Ubuntu repository. Other Linux distributions (RHEL, CentOS, Rocky, SUSE, etc.) are not covered by the installer.
 
 ---
 
@@ -141,6 +158,9 @@ allowed, depending on which ones the client actually uses:
 > doc — it was moved here because these are ports that need to be enabled **before** reaching the
 > step of creating the RFC connection (Step 5), not something to verify only at that point.
 
+The ports below are for **SAP ABAP** sources (RFC). For **SAP OData** sources, none of them apply —
+see [SAP OData (HTTPS)](#sap-odata-https) at the end of this section.
+
 ### Ports to enable
 
 | Port | Direction | SAP service | What Crestone uses it for |
@@ -199,5 +219,17 @@ If the SAProuter requires a routing password, the intermediate `/W/` parameter i
 A Communication- or Dialog-type user with permissions to execute RFC (`S_RFC`) and read the
 tables or extractors that will be extracted. It also needs `RFC_SYSTEM_INFO` authorization, which
 Crestone uses when connecting to detect whether the system is Unicode.
+
+### SAP OData (HTTPS)
+
+OData sources don't use RFC, so the ports above (32NN, 33NN, 3299) don't apply. Crestone calls
+the OData service directly over HTTP(S):
+
+- **Enable:** outbound HTTPS from the Crestone server to the SAP server's HTTP(S) port (ICM or
+  Web Dispatcher). Host and port are whatever the service URL uses.
+- **In Crestone:** the service's base URL (without the service name — the service is chosen later,
+  on the node), plus Basic Auth (user and password) or an API Key.
+- **SAP user:** a technical user with authorization to run the services (typically `S_SERVICE`)
+  and access to the data each service exposes.
 
 ---
