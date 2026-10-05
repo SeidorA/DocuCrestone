@@ -90,3 +90,33 @@ Click on "Schedule Execution" to configure how often the job should run. Dependi
 ### 9. Confirm the Scheduling
 Once you’ve defined the execution schedule, click on "Schedule Job" to finalize and activate it.
 And that's it! The job with the scheduled execution has been successfully created.
+
+## Time zones in scheduled jobs
+
+Whichever scheduling option you use (Once per Day, Custom Cron, etc.), the time you enter is saved
+exactly as you typed it — in **wall-clock time** — along with the **time zone of the browser you
+were using** at the moment you saved the schedule. Crestone does **not** convert that time to UTC.
+
+<!-- screenshot: schedule form highlighting the entered time next to the detected browser time zone -->
+
+:::::info
+The time zone is captured once, when the schedule is saved, and stays fixed for that schedule from
+then on — it does not update automatically if you later open Crestone from a different time zone.
+:::::
+
+This matters in two common situations:
+
+- **Teams spread across countries:** if a colleague in a different time zone created or last edited
+  a job's schedule, the "next execution" shown in Crestone is calculated using *their* browser's
+  time zone at the moment they saved it — not yours. Before assuming a schedule is wrong, check who
+  configured it and from where.
+- **Editing an existing schedule:** if you open and re-save a schedule from a different time zone
+  than the one it was originally created in, the **new** time zone (yours) is the one that gets
+  stored, and the execution time may shift as a result. If you only need to review a schedule
+  without changing it, avoid re-saving it.
+
+:::warning
+A schedule created before Crestone started recording the browser's time zone falls back to **UTC**
+by default. If an older job's execution times look off by a fixed number of hours, this is the
+most likely cause — re-save its schedule to pick up the correct time zone.
+:::
