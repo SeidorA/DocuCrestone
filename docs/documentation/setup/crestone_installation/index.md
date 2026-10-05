@@ -103,6 +103,10 @@ After installation completes, test the system by opening the following URLs in y
   ```bash
   sudo docker compose -p crestone -f /crestone/docker-compose-full.yml --env-file /crestone/.env.runtime down
   ``` 
+- Check the status of all containers (names and whether they're `Up`, `Restarting`, `Exited`, etc.):
+  ```bash
+  sudo docker ps --format 'table {{.Names}}\t{{.Status}}'
+  ```
 - View logs:
   ```bash
   sudo docker logs crestone-back --tail 200
