@@ -30,7 +30,7 @@ In the extraction node's **Source** tab, select:
 - **Type:** `Table CDC`
 - **Base Table:** the table to capture changes from (e.g. `MAKT` — Material Descriptions)
 
-<!-- screenshot: Extraction node Source tab with Source=SAP ABAP, Type=Table CDC, Base Table field -->
+![ExtraccionNodoS](/img/node/cdc/a.png)
 
 Crestone automatically maps the table's fields once you select it.
 
@@ -58,7 +58,8 @@ Last execution: 20251001151851
 Status: Initialized
 ```
 
-<!-- screenshot: CDC Config tab showing Pointer / Last execution / Status -->
+![ExtraccionNodoS](/img/node/cdc/b.png)
+![ExtraccionNodoS](/img/node/cdc/c.png)
 
 ### 4. Manage the pointer (optional)
 
@@ -69,7 +70,7 @@ From the same **CDC Config** tab you can control the CDC lifecycle without needi
 | **Reset Pointer** | Reinitializes the process: the pointer is set back to zero and cleared from the control table. Use this when you need a full reload. |
 | **Update Pointer without Extraction** | Moves the pointer to the current position without extracting data. Useful to skip a known/erroneous window or to resync manually. |
 
-<!-- screenshot: CDC Config tab with "Reset Pointer" and "Update Pointer without Extraction" actions -->
+![ExtraccionNodoS](/img/node/cdc/d.png)
 
 ## Considerations
 

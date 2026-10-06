@@ -37,7 +37,7 @@ You will be prompted to enter the credentials needed to connect to your SAP ABAP
 **Password:**
 -   Enter the **password** associated with the SAP username. This is the same password you use when logging into the SAP system.
 
-<!-- screenshot: SAP ABAP credentials form including the "SAP Router" field -->
+![SAP ABAP credentials](/img/old/hana/pass.png)
 
 ## 3. Test the connection:
 
