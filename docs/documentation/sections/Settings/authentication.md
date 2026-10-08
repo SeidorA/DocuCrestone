@@ -45,22 +45,31 @@ reset the second factor.
 :::::
 
 
-## Sign in with Azure AD (SSO)
+## Sign in with Microsoft (SSO)
 
-If your company enabled single sign-on, the login page shows a **"Sign in with
-Microsoft"** option.
+If your company enabled Microsoft login, you can use the **"Sign In with Microsoft"** button on the
+login page to sign in with your corporate account, without a Crestone password.
 
-- On your **first access**, Crestone creates your profile automatically and
-  assigns you to your default workspace.
-- Authentication is completed by Azure AD; you are returned to Crestone at
-  `/auth/callback` with your session started.
+- If you **already have a user** in Crestone, you sign in with your usual user and role.
+- If you **don't have a user yet**, one is created automatically **inside your company's tenant**,
+  with the **read-only** role *Microsoft SSO user* and access to the tenant's workspaces. An
+  administrator can later give you a different role.
+- Microsoft completes the authentication; you are then returned to Crestone with your session
+  started.
 
 ![Sign in with Azure AD ](/img/settings/aut/b.png)
 
 :::::info
-SSO availability depends on your installation. Ask your administrator if the
-option is not visible.
+Microsoft login only works if a **superadmin** configured it in
+**Settings → Microsoft Login**. If it is not configured, the button shows a notice and no user is
+created. Ask your administrator.
 :::::
+
+### Are you an administrator?
+
+- To **configure it** in Crestone: [Microsoft Login](./microsoft-login).
+- To **create the application in Azure** and get the values to enter:
+  [Create the application in Azure](./azure-app-registration).
 
 ## Session lifetime
 
