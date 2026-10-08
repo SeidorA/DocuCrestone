@@ -78,8 +78,9 @@ Crestone communicates internally over its own Docker network (Kafka, the databas
 | 81 | Nginx Proxy Manager (Admin) | NGINX's own admin panel, used to create/edit the Proxy Hosts that publish the other services. Can stay closed except when someone needs to change a host. | Inbound, admins only |
 | 7000 | Kong / Supabase Auth API (direct, bypasses NGINX) | Account confirmation, invite, and email-change links point straight at this port (`http://<host>:7000/auth/v1/verify`), not through NGINX. If it's closed, the user clicks the email link and it fails to load. | Inbound — same audience as 80/443 |
 | 22 | SSH | Server administration: maintenance, updates, restarts, support. | Inbound, support/admins only |
+| 587 | SMTP (AWS SES) — `email-smtp.us-east-1.amazonaws.com` | Outbound email delivery (account confirmation, invite, password reset). If it's blocked the emails are never sent, and there's no error on the Crestone side. See [Email delivery](#email-delivery). | **Outbound** |
 
-All of the above are **inbound only** — Crestone never initiates outbound connections into the client's network through any of these ports (the one separate case is outbound *email delivery*, covered below; SAP/source/destination connectivity for extraction nodes is a different topic entirely, not a "server port").
+All of the ports above are **inbound only**, except 587 — Crestone never initiates outbound connections into the client's network through them. Port 587 is the only *outbound* port in this table (SAP/source/destination connectivity for extraction nodes is a different topic entirely, not a "server port").
 
 If the installation starts out with just an IP or `nip.io` and doesn't have a TLS certificate yet, access is over **plain HTTP** (port 80), not HTTPS. Some corporate security policies or proxies block unencrypted HTTP traffic by default — if the UI "won't load" but port 80 is confirmed open, check this with the client's security team before assuming it's a Crestone problem.
 
